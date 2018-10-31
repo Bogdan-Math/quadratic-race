@@ -1,5 +1,3 @@
-package Main;
-
 import frames.Start;
 
 public class Main {

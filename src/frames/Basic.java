@@ -5,10 +5,6 @@ import javax.swing.JFrame;
 
 public class Basic extends JFrame {
 
-	/**
-	 * 
-	 */
-
 	public Basic() {
 		this("Quadratic Race");
 	}

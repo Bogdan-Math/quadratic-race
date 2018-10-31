@@ -8,9 +8,6 @@ import javax.swing.JPanel;
 
 public class PPicture extends JPanel {
 
-	/**
-	 * 
-	 */
 	private Image picture;
 
 	public PPicture(Image picture) {

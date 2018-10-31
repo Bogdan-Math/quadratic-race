@@ -6,10 +6,6 @@ import panels.PPicture;
 
 public class Picture extends Basic {
 
-	/**
-	 * 
-	 */
-
 	public Picture(Image result) {
 		PPicture picture = new PPicture(result);
 

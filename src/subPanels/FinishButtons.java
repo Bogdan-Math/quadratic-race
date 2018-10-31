@@ -14,10 +14,6 @@ import events.FinishButtonsAdapter;
 
 public class FinishButtons extends JPanel {
 
-	/**
-	 * 
-	 */
-
 	private Image buttonEasy = new ImageIcon(getClass().getClassLoader().getResource("pictures/restart.png"))
 			.getImage();
 	private Image buttonNormal = new ImageIcon(getClass().getClassLoader().getResource("pictures/close.png"))

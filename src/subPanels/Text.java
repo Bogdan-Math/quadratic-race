@@ -9,10 +9,6 @@ import javax.swing.JPanel;
 
 public class Text extends JPanel {
 
-	/**
-	 * 
-	 */
-
 	public Text(String text) {
 		setLayout(new BorderLayout());
 		JLabel choose = new JLabel();

@@ -13,10 +13,6 @@ import events.StartButtonsAdapter;
 
 public class StartButtons extends JPanel {
 
-	/**
-	 * 
-	 */
-
 	private Image buttonEasy = new ImageIcon(getClass().getClassLoader().getResource("pictures/buttonEasy.png"))
 			.getImage();
 	private Image buttonNormal = new ImageIcon(getClass().getClassLoader().getResource("pictures/buttonNormal.png"))

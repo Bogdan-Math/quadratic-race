@@ -28,9 +28,6 @@ import frames.Road;
 
 public class PRoad extends JPanel implements ActionListener, Runnable {
 
-	/**
-	 * 
-	 */
 	private int difficulty;
 	private int winLine = 25000;
 

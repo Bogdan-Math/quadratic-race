@@ -10,10 +10,6 @@ import subPanels.Text;
 
 public class PFinish extends JPanel {
 
-	/**
-	 * 
-	 */
-
 	public PFinish(JFrame buttonsFrame) {
 		setLayout(new GridLayout(2, 1));
 		add(new Text("aaand???"));

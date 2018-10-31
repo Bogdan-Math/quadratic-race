@@ -12,10 +12,6 @@ import panels.PRoad;
 
 public class StatisticShow extends JPanel {
 
-	/**
-	 * 
-	 */
-
 	private static final double TIME_START = System.currentTimeMillis();
 	private PRoad road;
 

@@ -5,9 +5,6 @@ import panels.PRoad;
 
 public class Road extends Basic {
 
-	/**
-	 * 
-	 */
 	public Road(Difficulty difficulty) {
 
 		PRoad road = new PRoad(difficulty, this);
