@@ -1,7 +1,7 @@
-package logics;
+package logic;
 
-import objects.Player;
-import panels.PRoad;
+import object.Player;
+import panel.PRoad;
 
 public class Win {
 

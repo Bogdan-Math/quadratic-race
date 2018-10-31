@@ -1,4 +1,4 @@
-package objects;
+package object;
 
 import java.awt.Image;
 import java.awt.Rectangle;

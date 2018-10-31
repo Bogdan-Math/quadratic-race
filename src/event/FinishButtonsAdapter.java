@@ -1,10 +1,10 @@
-package events;
+package event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
-import frames.Start;
+import frame.Start;
 
 public class FinishButtonsAdapter implements ActionListener {
 

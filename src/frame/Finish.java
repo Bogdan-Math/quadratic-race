@@ -1,8 +1,8 @@
-package frames;
+package frame;
 
-import panels.PFinish;
+import panel.PFinish;
 
-public class Finish extends Basic {
+public class Finish extends BaseFrame {
 
 	public Finish() {
 		add(new PFinish(this));

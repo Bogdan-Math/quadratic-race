@@ -1,8 +1,8 @@
-package objects;
+package object;
 
 import javax.swing.ImageIcon;
 
-import panels.PRoad;
+import panel.PRoad;
 
 public class Enemy extends MovingUnit {
 

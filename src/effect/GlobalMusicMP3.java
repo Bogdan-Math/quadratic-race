@@ -1,4 +1,4 @@
-package effects;
+package effect;
 
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;

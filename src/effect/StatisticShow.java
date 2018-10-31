@@ -1,4 +1,4 @@
-package effects;
+package effect;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,8 +7,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import objects.Player;
-import panels.PRoad;
+import object.Player;
+import panel.PRoad;
 
 public class StatisticShow extends JPanel {
 

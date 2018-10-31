@@ -1,12 +1,12 @@
-package logics;
+package logic;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-import frames.Finish;
-import frames.Picture;
-import frames.Road;
-import panels.PRoad;
+import frame.Finish;
+import frame.Picture;
+import frame.Road;
+import panel.PRoad;
 
 public class Result {
 

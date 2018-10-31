@@ -1,4 +1,4 @@
-package effects;
+package effect;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

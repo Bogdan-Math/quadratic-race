@@ -1,4 +1,4 @@
-package subPanels;
+package panel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,9 +7,9 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Text extends JPanel {
+class Text extends JPanel {
 
-	public Text(String text) {
+	Text(String text) {
 		setLayout(new BorderLayout());
 		JLabel choose = new JLabel();
 		choose.setText(text);

@@ -1,12 +1,12 @@
-package events;
+package event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import frames.Road;
-import logics.Difficulty;
+import frame.Road;
+import logic.Difficulty;
 
 public class StartButtonsAdapter implements ActionListener {
 

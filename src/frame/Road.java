@@ -1,9 +1,9 @@
-package frames;
+package frame;
 
-import logics.Difficulty;
-import panels.PRoad;
+import logic.Difficulty;
+import panel.PRoad;
 
-public class Road extends Basic {
+public class Road extends BaseFrame {
 
 	public Road(Difficulty difficulty) {
 

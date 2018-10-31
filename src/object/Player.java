@@ -1,9 +1,9 @@
-package objects;
+package object;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 
-import panels.PRoad;
+import panel.PRoad;
 
 public class Player extends MovingUnit {
 

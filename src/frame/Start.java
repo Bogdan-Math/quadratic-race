@@ -1,8 +1,8 @@
-package frames;
+package frame;
 
-import panels.PStart;
+import panel.PStart;
 
-public class Start extends Basic {
+public class Start extends BaseFrame {
 
 	public Start() {
 		add(new PStart(this));

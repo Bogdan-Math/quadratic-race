@@ -1,10 +1,10 @@
-package frames;
+package frame;
 
 import java.awt.Image;
 
-import panels.PPicture;
+import panel.PPicture;
 
-public class Picture extends Basic {
+public class Picture extends BaseFrame {
 
 	public Picture(Image result) {
 		PPicture picture = new PPicture(result);
