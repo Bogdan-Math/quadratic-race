@@ -1,5 +1,4 @@
-image: java:11.0.1-jdk
-image: maven:latest
+image: maven:3.5-jdk-11
 
 build_single_executable_file:
   script: mvn package
