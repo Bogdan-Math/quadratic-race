@@ -1,5 +1,5 @@
 image: maven:latest
-image: java:11
+image: java:10
 
 build_single_executable_file:
   script: mvn package
