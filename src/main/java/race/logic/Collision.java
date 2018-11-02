@@ -1,4 +1,4 @@
-package logic;
+package race.logic;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import object.Enemy;
-import object.Player;
-import effect.CollisionSoundWAV;
+import race.object.Enemy;
+import race.object.Player;
+import race.effect.CollisionSoundWAV;
 
 public class Collision {
 

@@ -1,4 +1,4 @@
-package effect;
+package race.effect;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,8 +7,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import object.Player;
-import panel.PRoad;
+import race.object.Player;
+import race.panel.PRoad;
 
 public class StatisticShow extends JPanel {
 

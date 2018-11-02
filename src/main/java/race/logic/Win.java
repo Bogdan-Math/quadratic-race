@@ -1,7 +1,7 @@
-package logic;
+package race.logic;
 
-import object.Player;
-import panel.PRoad;
+import race.object.Player;
+import race.panel.PRoad;
 
 public class Win {
 

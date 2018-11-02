@@ -1,4 +1,6 @@
-import frame.Start;
+package race;
+
+import race.frame.Start;
 
 public class Main {
 

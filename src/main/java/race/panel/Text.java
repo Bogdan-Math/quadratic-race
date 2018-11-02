@@ -1,4 +1,4 @@
-package panel;
+package race.panel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

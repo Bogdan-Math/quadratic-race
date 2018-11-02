@@ -1,4 +1,4 @@
-package object;
+package race.object;
 
 import java.awt.Image;
 import java.awt.Rectangle;

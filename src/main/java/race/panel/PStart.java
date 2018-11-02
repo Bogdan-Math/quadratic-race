@@ -1,11 +1,11 @@
-package panel;
+package race.panel;
 
 import java.awt.*;
 
 import javax.swing.*;
 
-import event.StartButtonsAdapter;
-import logic.Difficulty;
+import race.event.StartButtonsAdapter;
+import race.logic.Difficulty;
 
 public class PStart extends JPanel {
 

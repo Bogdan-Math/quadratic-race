@@ -1,4 +1,4 @@
-package effect;
+package race.effect;
 
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;

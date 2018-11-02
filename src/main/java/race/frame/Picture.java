@@ -1,8 +1,8 @@
-package frame;
+package race.frame;
 
 import java.awt.Image;
 
-import panel.PPicture;
+import race.panel.PPicture;
 
 public class Picture extends BaseFrame {
 

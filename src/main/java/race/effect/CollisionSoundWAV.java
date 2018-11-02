@@ -1,4 +1,4 @@
-package effect;
+package race.effect;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

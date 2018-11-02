@@ -1,6 +1,6 @@
-package frame;
+package race.frame;
 
-import panel.PFinish;
+import race.panel.PFinish;
 
 public class Finish extends BaseFrame {
 

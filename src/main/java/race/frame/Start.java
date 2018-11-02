@@ -1,6 +1,6 @@
-package frame;
+package race.frame;
 
-import panel.PStart;
+import race.panel.PStart;
 
 public class Start extends BaseFrame {
 

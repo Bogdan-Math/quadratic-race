@@ -1,9 +1,9 @@
-package object;
+package race.object;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 
-import panel.PRoad;
+import race.panel.PRoad;
 
 public class Player extends MovingUnit {
 

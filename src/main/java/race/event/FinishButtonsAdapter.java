@@ -1,10 +1,10 @@
-package event;
+package race.event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
-import frame.Start;
+import race.frame.Start;
 
 public class FinishButtonsAdapter implements ActionListener {
 

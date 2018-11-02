@@ -1,4 +1,4 @@
-package frame;
+package race.frame;
 
 import javax.swing.*;
 

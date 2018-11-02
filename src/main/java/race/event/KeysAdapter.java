@@ -1,9 +1,9 @@
-package event;
+package race.event;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import object.Player;
+import race.object.Player;
 
 public class KeysAdapter extends KeyAdapter {
 

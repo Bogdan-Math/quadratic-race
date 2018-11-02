@@ -1,4 +1,4 @@
-package panel;
+package race.panel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import event.FinishButtonsAdapter;
+import race.event.FinishButtonsAdapter;
 
 public class PFinish extends JPanel {
 

@@ -1,4 +1,4 @@
-package panel;
+package race.panel;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,16 +15,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import object.Enemy;
-import object.Player;
-import logic.Collision;
-import logic.Difficulty;
-import logic.Result;
-import logic.Win;
-import effect.GlobalMusicMP3;
-import effect.StatisticShow;
-import event.KeysAdapter;
-import frame.Road;
+import race.object.Enemy;
+import race.object.Player;
+import race.logic.Collision;
+import race.logic.Difficulty;
+import race.logic.Result;
+import race.logic.Win;
+import race.effect.GlobalMusicMP3;
+import race.effect.StatisticShow;
+import race.event.KeysAdapter;
+import race.frame.Road;
 
 public class PRoad extends JPanel implements ActionListener, Runnable {
 

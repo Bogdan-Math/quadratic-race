@@ -1,7 +1,7 @@
-package frame;
+package race.frame;
 
-import logic.Difficulty;
-import panel.PRoad;
+import race.logic.Difficulty;
+import race.panel.PRoad;
 
 public class Road extends BaseFrame {
 
