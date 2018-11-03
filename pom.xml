@@ -4,46 +4,66 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--module version properties-->
-    <groupId>quadratic-race</groupId>
-    <artifactId>quadratic-race</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <properties>
+
+        <!--build main properties-->
+        <java.release>11</java.release>
+        <build.name>quadratic-race</build.name>
+        <build.name.suffix>executable</build.name.suffix>
+        <build.version>1.0-SNAPSHOT</build.version>
+        <packaging>jar</packaging>
+
+        <!--plugins properties-->
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <spring-boot-maven-plugin.version>2.1.0.RELEASE</spring-boot-maven-plugin.version>
+
+        <!--dependencies properties-->
+        <jlayer.version>1.0.1</jlayer.version>
+        <javafx-controls.version>11</javafx-controls.version>
+
+    </properties>
+
+    <!--module properties-->
+    <groupId>${build.name}</groupId>
+    <artifactId>${build.name}</artifactId>
+    <version>${build.version}</version>
 
     <!--packaging properties-->
-    <name>quadratic-race</name>
-    <packaging>jar</packaging>
+    <name>${build.name}</name>
+    <packaging>${packaging}</packaging>
 
     <!--build properties-->
     <build>
-        <finalName>quadratic-race</finalName>
+        <finalName>${build.name}</finalName>
 
         <plugins>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <release>${java.release}</release>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>repackage</goal>
                         </goals>
                         <configuration>
-                            <classifier>executable</classifier>
+                            <classifier>${build.name.suffix}-${build.version}</classifier>
                             <mainClass>
                                 race.HelloFX
                             </mainClass>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <release>11</release>
-                </configuration>
             </plugin>
 
         </plugins>
@@ -55,13 +75,13 @@
         <dependency>
             <groupId>javazoom</groupId>
             <artifactId>jlayer</artifactId>
-            <version>1.0.1</version>
+            <version>${jlayer.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>11</version>
+            <version>${javafx-controls.version}</version>
         </dependency>
 
     </dependencies>
