@@ -1,6 +1,6 @@
-module quadratic.race {
+module race {
 
-    exports race;
+    opens race;
 
     requires javafx.controls;
     requires java.desktop;
