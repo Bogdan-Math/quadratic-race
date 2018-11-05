@@ -10,10 +10,10 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 
 public class HelloFXTest extends ApplicationTest {
 
-//    @BeforeClass
-//    public static void beforeClass() {
-//        System.setProperty("testfx.headless", "true");
-//    }
+    @BeforeClass
+    public static void beforeClass() {
+        System.setProperty("testfx.headless", "true");
+    }
 
     @Override
     public void start(Stage stage) {
