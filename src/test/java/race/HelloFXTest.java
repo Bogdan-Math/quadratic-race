@@ -1,5 +1,6 @@
 package race;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.junit.BeforeClass;
@@ -24,9 +25,20 @@ public class HelloFXTest extends ApplicationTest {
     }
 
     @Test
-    public void name() {
-//        clickOn("#b1");
-        assertThat(lookup("#lab1").queryAs(Label.class))
+    public void test_1() {
+        assertThat(lookup("#label_1").queryAs(Label.class))
                 .hasText("Hello, JavaFX, running on Java 11");
     }
+
+    @Test
+    public void test_2() {
+        assertThat(lookup("#button_1").queryAs(Button.class))
+                .hasText("click me!");
+
+        clickOn("#button_1");
+
+        assertThat(lookup("#button_1").queryAs(Button.class))
+                .hasText("clicked!");
+    }
+
 }
