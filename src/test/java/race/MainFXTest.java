@@ -9,7 +9,7 @@ import org.testfx.framework.junit.ApplicationTest;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 
-public class HelloFXTest extends ApplicationTest {
+public class MainFXTest extends ApplicationTest {
 
     @BeforeClass
     public static void beforeClass() {
@@ -18,7 +18,7 @@ public class HelloFXTest extends ApplicationTest {
 
     @Override
     public void start(Stage stage) {
-        new HelloFX()
+        new MainFX()
                 .start(stage);
 
         stage.show();
