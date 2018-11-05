@@ -1,7 +1,4 @@
-<b> 
-quadratic-race - little desktop game for single player.
-</b>
-<br>
+# quadratic-race - little desktop game for single player.
 
 - Project in global refactoring progress:
     - from <b>'plain: Java 7 + AWT + Swing'</b> 
