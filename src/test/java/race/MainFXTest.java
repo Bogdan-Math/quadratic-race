@@ -3,21 +3,26 @@ package race;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.testfx.framework.junit.ApplicationTest;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.testfx.api.FxRobot;
+import org.testfx.framework.junit5.ApplicationExtension;
+import org.testfx.framework.junit5.Start;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 
-public class MainFXTest extends ApplicationTest {
+@ExtendWith(ApplicationExtension.class)
+class MainFXTest {
 
-    @BeforeClass
-    public static void beforeClass() {
+    @BeforeAll
+    static void beforeAll() {
         System.setProperty("testfx.headless", "true");
     }
 
-    @Override
-    public void start(Stage stage) {
+    @Start
+    void onStart(Stage stage) {
         new MainFX()
                 .start(stage);
 
@@ -25,19 +30,21 @@ public class MainFXTest extends ApplicationTest {
     }
 
     @Test
-    public void test_1() {
-        assertThat(lookup("#label_1").queryAs(Label.class))
+    @DisplayName("Verify correct label text")
+    void test_1(FxRobot fxRobot) {
+        assertThat(fxRobot.lookup("#label_1").queryAs(Label.class))
                 .hasText("Hello, JavaFX, running on Java 11");
     }
 
     @Test
-    public void test_2() {
-        assertThat(lookup("#button_1").queryAs(Button.class))
+    @DisplayName("Verify button text before and after click")
+    void test_2(FxRobot fxRobot) {
+        assertThat(fxRobot.lookup("#button_1").queryAs(Button.class))
                 .hasText("click me!");
 
-        clickOn("#button_1");
+        fxRobot.clickOn("#button_1");
 
-        assertThat(lookup("#button_1").queryAs(Button.class))
+        assertThat(fxRobot.lookup("#button_1").queryAs(Button.class))
                 .hasText("clicked!");
     }
 

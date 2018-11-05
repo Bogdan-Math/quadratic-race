@@ -29,6 +29,7 @@
         <javafx-controls.version>11</javafx-controls.version>
         <testfx.version>4.0.15-alpha</testfx.version>
         <openjfx-monocle.version>jdk-11+26</openjfx-monocle.version>
+        <junit-jupiter-engine.version>5.3.1</junit-jupiter-engine.version>
 
     </properties>
 
@@ -113,7 +114,7 @@
 
         <dependency>
             <groupId>org.testfx</groupId>
-            <artifactId>testfx-junit</artifactId>
+            <artifactId>testfx-junit5</artifactId>
             <version>${testfx.version}</version>
             <scope>test</scope>
         </dependency>
@@ -122,6 +123,14 @@
             <groupId>org.testfx</groupId>
             <artifactId>openjfx-monocle</artifactId>
             <version>${openjfx-monocle.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter-engine.version}</version>
             <scope>test</scope>
         </dependency>
 
