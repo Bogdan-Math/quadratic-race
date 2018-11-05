@@ -1,1 +1,6 @@
-QuadraticRace - little game for desktop. Using Java frameworks: AWT and Swing. And one additional library for MP3 - jl1.0.1.
+<b> 
+quadratic-race - little desktop game for singe player.
+</b>
+
+- Project in global refactoring progress now. 
+- Moving project from <b>'plain: Java 7 + AWT + Swing'</b> to <b>'maven: Java 11 + JavaFX'</b>.
