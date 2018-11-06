@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import race.scene.ModeScene;
 
 import java.io.InputStream;
 
@@ -17,18 +18,16 @@ import static race.picture.PictureReader.readPictureAsInputStream;
 
 public class MainFX extends Application {
 
+    private static final String ICON    = "race/picture/icon.png";
+    private static final String TITLE   = "Quadratic Race";
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) {
-
-        InputStream iconAsInputStream = readPictureAsInputStream("race/picture/image.png");
-        stage.getIcons().add(new Image(iconAsInputStream));
-
-        Label l1 = new Label("clicked!!!");
-        Scene scene2 = new Scene(l1, 100, 50);
+        fillHeader(stage);
 
         Label l = new Label("Hello, JavaFX, running on Java 11");
         l.setId("label_1");
@@ -38,20 +37,26 @@ public class MainFX extends Application {
         b.setOnAction(e -> b.setText("clicked!"));
 
         Button newWindowButton = new Button();
-        newWindowButton.setGraphic(new ImageView(new Image(readPictureAsInputStream("race/picture/image.png"))));
+        newWindowButton.setGraphic(new ImageView(new Image(readPictureAsInputStream("race/picture/icon.png"))));
         newWindowButton.setId("new_window");
         newWindowButton.setOnAction(e -> {
-            stage.setScene(scene2);
+            stage.setScene(new ModeScene());
             moveStageToCenter(stage);
         });
 
         GridPane ap = new GridPane();
         ap.addRow(1, l, b, newWindowButton);
 
-        Scene scene1 = new Scene(ap, 320, 240);
+        Scene scene1 = new Scene(ap);
         stage.setScene(scene1);
         stage.show();
         moveStageToCenter(stage);
+    }
+
+    private void fillHeader(Stage stage) {
+        stage.setTitle(TITLE);
+        InputStream iconAsInputStream = readPictureAsInputStream(ICON);
+        stage.getIcons().add(new Image(iconAsInputStream));
     }
 
     private void moveStageToCenter(Stage stage) {
