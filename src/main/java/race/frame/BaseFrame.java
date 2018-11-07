@@ -16,7 +16,7 @@ class BaseFrame extends JFrame {
 	}
 
 	private void setIcon() {
-		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("pictures/image.png"));
+		ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("race/picture/icon.png"));
 		this.setIconImage(image.getImage());
 	}
 }

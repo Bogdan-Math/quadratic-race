@@ -1,17 +1,18 @@
 package race.logic;
 
 public enum Mode {
-    EASY("race/picture/1_easyButton.png"),
-    NORMAL("race/picture/2_normalButton.png"),
-    HARD("race/picture/3_hardButton.png");
 
-    private String pathToImage;
+    EASY(50),
+    NORMAL(100),
+    HARD(150);
 
-    Mode(String pathToImage) {
-        this.pathToImage = pathToImage;
+    private int maxEnemiesCount;
+
+    Mode(int maxEnemiesCount) {
+        this.maxEnemiesCount = maxEnemiesCount;
     }
 
-    public String getPathToImage() {
-        return pathToImage;
+    public int getMaxEnemiesCount() {
+        return maxEnemiesCount;
     }
 }

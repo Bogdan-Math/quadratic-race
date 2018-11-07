@@ -9,13 +9,13 @@ import race.logic.Difficulty;
 
 public class PStart extends JPanel {
 
-	private Image buttonEasy = new ImageIcon(getClass().getClassLoader().getResource("pictures/buttonEasy.png"))
+	private Image buttonEasy = new ImageIcon(getClass().getClassLoader().getResource("race/picture/1_easyButton.png"))
 			.getImage();
 
-	private Image buttonNormal = new ImageIcon(getClass().getClassLoader().getResource("pictures/buttonNormal.png"))
+	private Image buttonNormal = new ImageIcon(getClass().getClassLoader().getResource("race/picture/2_normalButton.png"))
 			.getImage();
 
-	private Image buttonHard = new ImageIcon(getClass().getClassLoader().getResource("pictures/buttonHard.png"))
+	private Image buttonHard = new ImageIcon(getClass().getClassLoader().getResource("race/picture/3_hardButton.png"))
 			.getImage();
 
 	public PStart(JFrame buttonsFrame) {
