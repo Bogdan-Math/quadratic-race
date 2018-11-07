@@ -10,10 +10,10 @@ import race.event.FinishButtonsAdapter;
 
 public class PFinish extends JPanel {
 
-	private Image buttonEasy = new ImageIcon(getClass().getClassLoader().getResource("pictures/restart.png"))
+	private Image buttonEasy = new ImageIcon(getClass().getClassLoader().getResource("race/picture/restart.png"))
 			.getImage();
 
-	private Image buttonNormal = new ImageIcon(getClass().getClassLoader().getResource("pictures/close.png"))
+	private Image buttonNormal = new ImageIcon(getClass().getClassLoader().getResource("race/picture/close.png"))
 			.getImage();
 
 

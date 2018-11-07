@@ -10,14 +10,14 @@ import race.panel.PRoad;
 
 public class Result {
 
-	private Image imgGood = new ImageIcon(getClass().getClassLoader().getResource("pictures/resultGood.png"))
+	private Image imgGood = new ImageIcon(getClass().getClassLoader().getResource("race/picture/resultGood.png"))
 			.getImage();
-	private Image imgBad = new ImageIcon(getClass().getClassLoader().getResource("pictures/resultBad.png")).getImage();
-	private Image imgAngel = new ImageIcon(getClass().getClassLoader().getResource("pictures/resultAngel.png"))
+	private Image imgBad = new ImageIcon(getClass().getClassLoader().getResource("race/picture/resultBad.png")).getImage();
+	private Image imgAngel = new ImageIcon(getClass().getClassLoader().getResource("race/picture/resultAngel.png"))
 			.getImage();
-	private Image imgDevil = new ImageIcon(getClass().getClassLoader().getResource("pictures/resultDevil.png"))
+	private Image imgDevil = new ImageIcon(getClass().getClassLoader().getResource("race/picture/resultDevil.png"))
 			.getImage();
-	private Image imgNeutral = new ImageIcon(getClass().getClassLoader().getResource("pictures/resultNeutral.png"))
+	private Image imgNeutral = new ImageIcon(getClass().getClassLoader().getResource("race/picture/resultNeutral.png"))
 			.getImage();
 
 	private Image img = imgNeutral;

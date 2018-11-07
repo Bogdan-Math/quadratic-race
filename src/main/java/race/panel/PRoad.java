@@ -1,30 +1,23 @@
 package race.panel;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
+import race.effect.GlobalMusicMP3;
+import race.effect.StatisticShow;
+import race.event.KeysAdapter;
+import race.frame.Road;
+import race.logic.Collision;
+import race.logic.Difficulty;
+import race.logic.Result;
+import race.logic.Win;
+import race.object.Enemy;
+import race.object.Player;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-
-import race.object.Enemy;
-import race.object.Player;
-import race.logic.Collision;
-import race.logic.Difficulty;
-import race.logic.Result;
-import race.logic.Win;
-import race.effect.GlobalMusicMP3;
-import race.effect.StatisticShow;
-import race.event.KeysAdapter;
-import race.frame.Road;
 
 public class PRoad extends JPanel implements ActionListener, Runnable {
 
@@ -37,20 +30,16 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 
 	private Timer mainTimer = new Timer(25, this);
 
-	/* Image img = new ImageIcon("res/road.png").getImage(); */
-	private Image road = new ImageIcon(getClass().getClassLoader().getResource("pictures/road.png")).getImage();
+	private Image road = new ImageIcon(getClass().getClassLoader().getResource("race/picture/road.png")).getImage();
 
 	public Image getRoad() {
 		return this.road;
 	}
 
-	// private Image pressTab = new
-	// ImageIcon(getClass().getClassLoader().getResource("pictures/TAB.png")).getImage();
-
 	private Player player = new Player(350, this.road.getHeight(null) - 175, 0,
-			new ImageIcon(getClass().getClassLoader().getResource("pictures/player.png")).getImage(),
-			new ImageIcon(getClass().getClassLoader().getResource("pictures/playerRight.png")).getImage(),
-			new ImageIcon(getClass().getClassLoader().getResource("pictures/playerLeft.png")).getImage(), this);
+			new ImageIcon(getClass().getClassLoader().getResource("race/picture/player.png")).getImage(),
+			new ImageIcon(getClass().getClassLoader().getResource("race/picture/playerRight.png")).getImage(),
+			new ImageIcon(getClass().getClassLoader().getResource("race/picture/playerLeft.png")).getImage(), this);
 
 	public Player getPlayer() {
 		return this.player;

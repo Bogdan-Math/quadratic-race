@@ -7,8 +7,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import race.scene.ModeScene;
 
-import java.io.InputStream;
-
 import static race.picture.PictureReader.readPictureAsInputStream;
 
 public class MainFX extends Application {
@@ -32,8 +30,7 @@ public class MainFX extends Application {
 
     private void fillHeaderFor(Stage stage) {
         stage.setTitle(TITLE);
-        InputStream iconAsInputStream = readPictureAsInputStream(ICON);
-        stage.getIcons().add(new Image(iconAsInputStream));
+        stage.getIcons().add(new Image(readPictureAsInputStream(ICON)));
     }
 
     private void moveToCenter(Stage stage) {
