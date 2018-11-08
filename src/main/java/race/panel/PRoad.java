@@ -5,7 +5,7 @@ import race.effect.StatisticShow;
 import race.event.KeysAdapter;
 import race.frame.Road;
 import race.logic.Collision;
-import race.logic.Difficulty;
+import race.logic.Mode;
 import race.logic.Result;
 import race.logic.Win;
 import race.object.Enemy;
@@ -21,7 +21,7 @@ import java.util.Random;
 
 public class PRoad extends JPanel implements ActionListener, Runnable {
 
-	private int difficulty;
+	private Mode mode;
 	private int winLine = 25000;
 
 	public int getWinLine() {
@@ -49,13 +49,13 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 	public Thread enemiesFactory = new Thread(this);
 	public Thread audioThread = new Thread(new GlobalMusicMP3());
 
-	private List<Enemy> enemies = new ArrayList<Enemy>();
+	private List<Enemy> enemies = new ArrayList<>();
 	private Road Froad;
 
-	public PRoad(Difficulty difficulty, Road Froad) {
+	public PRoad(Mode mode, Road Froad) {
+		this.mode = mode;
 		this.Froad = Froad;
 		setPreferredSize(new Dimension(road.getWidth(null), road.getHeight(null)));
-		checkDifficulty(difficulty);
 		mainTimer.start();
 		enemiesFactory.start();
 		audioThread.start();
@@ -63,21 +63,7 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 		setFocusable(true);
 	}
 
-	private void checkDifficulty(Difficulty d) {
-		if (d == Difficulty.easy) {
-			this.difficulty = 1000;
-		}
-		if (d == Difficulty.normal) {
-			this.difficulty = 500;
-		}
-		if (d == Difficulty.hard) {
-			this.difficulty = 25;
-		}
-	}
-
 	public void paint(Graphics g) {
-		g = (Graphics2D) g;
-
 		g.drawImage(road, 0, player.getLayer1(), null);
 		g.drawImage(road, 0, player.getLayer2(), null);
 		g.drawImage(road, 0, player.getLayer3(), null);
@@ -93,7 +79,7 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 
 		Color green = new Color(237, 28, 36);
 		Color red = new Color(34, 177, 76);
-		Font font = new Font("Arial", Font.CENTER_BASELINE, 20);
+		Font font = new Font("Arial", Font.BOLD, 20);
 
 		speed.showInformation(player.getBadEnemiesMiss(), g, font, green, "Left behind: +", 625, 25);
 		speed.showInformation(player.getGoodEnemiesPicked(), g, font, red, "Picked up: +", 625, 50);
@@ -101,8 +87,8 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 		speed.showInformation(player.getGoodEnemiesMiss(), g, font, red, "Left behind: -", 625, 100);
 	}
 
-	Win testWin = new Win(this, player);
-	Result result = new Result(testWin, this);
+	private Win testWin 	= new Win(this, player);
+	private Result result 	= new Result(testWin, this);
 
 	public void actionPerformed(ActionEvent e) {
 		player.move();
@@ -118,7 +104,7 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 		while (true) {
 			Random rand = new Random();
 			try {
-				Thread.sleep(rand.nextInt(this.difficulty));
+				Thread.sleep(rand.nextInt(mode.getMillisecondsInterval()));
 
 				enemies.add(new Enemy(rand.nextInt(700), -200, rand.nextInt(50), rand.nextBoolean(), this));
 

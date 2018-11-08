@@ -1,14 +1,13 @@
 package race.logic;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import race.effect.CollisionSoundWAV;
+import race.object.Enemy;
+import race.object.Player;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import race.object.Enemy;
-import race.object.Player;
-import race.effect.CollisionSoundWAV;
 
 public class Collision {
 
@@ -62,7 +61,7 @@ public class Collision {
 
 	public static List<Enemy> removeEnemies(List<Enemy> enemies, Player p) {
 
-		List<Enemy> changedEnemies = new ArrayList<Enemy>(enemies);
+		List<Enemy> changedEnemies = new ArrayList<>(enemies);
 
 		Iterator<Enemy> i = changedEnemies.iterator();
 		while (i.hasNext()) {
@@ -84,9 +83,6 @@ public class Collision {
 	}
 
 	public static void paintEnemies(Graphics g, List<Enemy> enemies) {
-
-		g = (Graphics2D) g;
-		// Enemy e = null;
 
 		List<Enemy> syncEnemies = new ArrayList<Enemy>(enemies);
 		// List<Enemy> syncEnemies = new CopyOnWriteArrayList<Enemy>(enemies);//

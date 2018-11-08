@@ -1,27 +1,25 @@
 package race.event;
 
+import race.frame.Road;
+import race.logic.Mode;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-
-import race.frame.Road;
-import race.logic.Difficulty;
-
 public class StartButtonsAdapter implements ActionListener {
 
-	JFrame buttonsFrame;
-	Difficulty difficulty;
+	private JFrame buttonsFrame;
+	private Mode mode;
 
-	public StartButtonsAdapter(JFrame buttonsFrame, Difficulty difficulty) {
+	public StartButtonsAdapter(JFrame buttonsFrame, Mode mode) {
 		this.buttonsFrame = buttonsFrame;
-		this.difficulty = difficulty;
-
+		this.mode = mode;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		buttonsFrame.dispose();
-		new Road(difficulty);
+		new Road(mode);
 	}
 }

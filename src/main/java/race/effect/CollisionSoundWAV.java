@@ -7,10 +7,12 @@ import javax.sound.sampled.Clip;
 public class CollisionSoundWAV {
 
 	public void getBad() throws Throwable {
+		//TODO: move sound to correct directory
 		playSound("sounds/collision.wav");
 	}
 
 	public void getGood() throws Throwable {
+		//TODO: move sound to correct directory
 		playSound("sounds/takeOne.wav");
 	}
 

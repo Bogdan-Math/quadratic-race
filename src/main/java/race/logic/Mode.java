@@ -2,17 +2,17 @@ package race.logic;
 
 public enum Mode {
 
-    EASY(50),
+    EASY(1000),
     NORMAL(100),
-    HARD(150);
+    HARD(10);
 
-    private int maxEnemiesCount;
+    private int millisecondsInterval;
 
-    Mode(int maxEnemiesCount) {
-        this.maxEnemiesCount = maxEnemiesCount;
+    Mode(int millisecondsInterval) {
+        this.millisecondsInterval = millisecondsInterval;
     }
 
-    public int getMaxEnemiesCount() {
-        return maxEnemiesCount;
+    public int getMillisecondsInterval() {
+        return millisecondsInterval;
     }
 }

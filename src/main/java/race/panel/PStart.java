@@ -1,11 +1,11 @@
 package race.panel;
 
+import race.event.StartButtonsAdapter;
+import race.logic.Mode;
+
 import java.awt.*;
 
 import javax.swing.*;
-
-import race.event.StartButtonsAdapter;
-import race.logic.Difficulty;
 
 public class PStart extends JPanel {
 
@@ -44,9 +44,9 @@ public class PStart extends JPanel {
 			b3.setVerticalTextPosition(AbstractButton.BOTTOM);
 			b3.setHorizontalTextPosition(AbstractButton.CENTER);
 
-			b1.addActionListener(new StartButtonsAdapter(buttonsFrame, Difficulty.easy));
-			b2.addActionListener(new StartButtonsAdapter(buttonsFrame, Difficulty.normal));
-			b3.addActionListener(new StartButtonsAdapter(buttonsFrame, Difficulty.hard));
+			b1.addActionListener(new StartButtonsAdapter(buttonsFrame, Mode.EASY));
+			b2.addActionListener(new StartButtonsAdapter(buttonsFrame, Mode.NORMAL));
+			b3.addActionListener(new StartButtonsAdapter(buttonsFrame, Mode.HARD));
 
 			add(b1);
 			add(b2);

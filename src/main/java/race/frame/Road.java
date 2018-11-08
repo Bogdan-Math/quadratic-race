@@ -1,13 +1,13 @@
 package race.frame;
 
-import race.logic.Difficulty;
+import race.logic.Mode;
 import race.panel.PRoad;
 
 public class Road extends BaseFrame {
 
-	public Road(Difficulty difficulty) {
+	public Road(Mode mode) {
 
-		PRoad road = new PRoad(difficulty, this);
+		PRoad road = new PRoad(mode, this);
 
 		int sizeX = road.getRoad().getWidth(null);
 		int sizeY = road.getRoad().getHeight(null);
