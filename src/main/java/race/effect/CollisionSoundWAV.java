@@ -7,13 +7,11 @@ import javax.sound.sampled.Clip;
 public class CollisionSoundWAV {
 
 	public void getBad() throws Throwable {
-		//TODO: move sound to correct directory
-		playSound("sounds/collision.wav");
+		playSound("race/sound/collision.wav");
 	}
 
 	public void getGood() throws Throwable {
-		//TODO: move sound to correct directory
-		playSound("sounds/takeOne.wav");
+		playSound("race/sound/takeOne.wav");
 	}
 
 	private void playSound(String resource) throws Throwable {

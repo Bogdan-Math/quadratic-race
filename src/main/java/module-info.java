@@ -1,7 +1,8 @@
 module race {
 
     opens race;
-    opens race.picture;
+    opens race.image;
+    opens race.sound;
 
     requires javafx.controls;
     requires java.desktop;

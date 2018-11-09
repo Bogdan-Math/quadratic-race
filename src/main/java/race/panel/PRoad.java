@@ -1,6 +1,6 @@
 package race.panel;
 
-import race.effect.GlobalMusicMP3;
+import race.sound.GlobalMusicMP3;
 import race.effect.StatisticShow;
 import race.event.KeysAdapter;
 import race.frame.Road;
@@ -30,16 +30,16 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 
 	private Timer mainTimer = new Timer(25, this);
 
-	private Image road = new ImageIcon(getClass().getClassLoader().getResource("race/picture/road.png")).getImage();
+	private Image road = new ImageIcon(getClass().getClassLoader().getResource("race/image/road.png")).getImage();
 
 	public Image getRoad() {
 		return this.road;
 	}
 
 	private Player player = new Player(350, this.road.getHeight(null) - 175, 0,
-			new ImageIcon(getClass().getClassLoader().getResource("race/picture/player.png")).getImage(),
-			new ImageIcon(getClass().getClassLoader().getResource("race/picture/playerRight.png")).getImage(),
-			new ImageIcon(getClass().getClassLoader().getResource("race/picture/playerLeft.png")).getImage(), this);
+			new ImageIcon(getClass().getClassLoader().getResource("race/image/player.png")).getImage(),
+			new ImageIcon(getClass().getClassLoader().getResource("race/image/playerRight.png")).getImage(),
+			new ImageIcon(getClass().getClassLoader().getResource("race/image/playerLeft.png")).getImage(), this);
 
 	public Player getPlayer() {
 		return this.player;
