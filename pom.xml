@@ -31,6 +31,7 @@
         <openjfx-monocle.version>jdk-11+26</openjfx-monocle.version>
         <junit-jupiter-engine.version>5.3.1</junit-jupiter-engine.version>
 
+        <javafx-media.version>11.0.1</javafx-media.version>
     </properties>
 
     <!--packaging properties-->
@@ -94,15 +95,15 @@
     <dependencies>
 
         <dependency>
-            <groupId>javazoom</groupId>
-            <artifactId>jlayer</artifactId>
-            <version>${jlayer.version}</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx-controls.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>${javafx-controls.version}</version>
+            <artifactId>javafx-media</artifactId>
+            <version>${javafx-media.version}</version>
         </dependency>
 
         <dependency>

@@ -4,13 +4,12 @@ import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import race.multimedia.image.ImageResource;
 import race.scene.ModeScene;
-
-import static race.image.ImageReader.readImage;
 
 public class MainFX extends Application {
 
-    private static final String ICON    = "race/image/icon.png";
+    private static final String ICON    = "race/multimedia/image/icon.png";
     private static final String TITLE   = "Quadratic Race";
 
     public static void main(String[] args) {
@@ -29,7 +28,7 @@ public class MainFX extends Application {
 
     private void fillHeaderFor(Stage stage) {
         stage.setTitle(TITLE);
-        stage.getIcons().add(readImage(ICON));
+        stage.getIcons().add(new ImageResource().getImage(ICON));
     }
 
     private void moveToCenter(Stage stage) {

@@ -1,10 +1,10 @@
 module race {
 
     opens race;
-    opens race.image;
-    opens race.sound;
+    opens race.multimedia.image;
+    opens race.multimedia.sound;
 
     requires javafx.controls;
+    requires javafx.media;
     requires java.desktop;
-    requires jlayer;
 }

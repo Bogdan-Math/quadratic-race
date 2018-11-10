@@ -17,9 +17,9 @@ public class Enemy extends MovingUnit {
 	public Enemy(int x, int y, int v, boolean enemy, PRoad road) {
 		this.enemy = enemy;
 		if (enemy == true) {
-			this.img = new ImageIcon(getClass().getClassLoader().getResource("race/image/enemyGood.png")).getImage();
+			this.img = new ImageIcon(getClass().getClassLoader().getResource("race/multimedia/image/enemyGood.png")).getImage();
 		} else {
-			this.img = new ImageIcon(getClass().getClassLoader().getResource("race/image/enemyBad.png")).getImage();
+			this.img = new ImageIcon(getClass().getClassLoader().getResource("race/multimedia/image/enemyBad.png")).getImage();
 		}
 		this.x = x;
 		this.y = y;
