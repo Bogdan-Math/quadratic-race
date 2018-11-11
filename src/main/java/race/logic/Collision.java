@@ -1,6 +1,6 @@
 package race.logic;
 
-import race.effect.CollisionSoundWAV;
+import race.multimedia.sound.SoundResource;
 import race.object.Enemy;
 import race.object.Player;
 
@@ -11,9 +11,12 @@ import java.util.List;
 
 public class Collision {
 
-	public static List<Enemy> enemyVsEnemies(List<Enemy> enemies) {
+	private static final String COLLISION_WITH_GOOD_UNIT_SOUND 	= "race/multimedia/sound/collision_with_good_unit.wav";
+	private static final String COLLISION_WITH_BAD_UNIT_SOUND 	= "race/multimedia/sound/collision_with_bad_unit.wav";
 
-		List<Enemy> changedEnemies = new ArrayList<Enemy>(enemies);
+	public static List<Enemy> unitVsUnits(List<Enemy> enemies) {
+
+		List<Enemy> changedEnemies = new ArrayList<>(enemies);
 
 		for (int i = 0; i < changedEnemies.size(); i++) {
 			for (int j = i + 1; j < changedEnemies.size(); j++) {
@@ -25,10 +28,9 @@ public class Collision {
 		return changedEnemies;
 	}
 
-	public static List<Enemy> playerVsEnemies(List<Enemy> enemies, Player p) {
+	public static List<Enemy> playerVsUnits(List<Enemy> enemies, Player p) {
 
-		CollisionSoundWAV sound = new CollisionSoundWAV();
-		List<Enemy> changedEnemies = new ArrayList<Enemy>(enemies);
+		List<Enemy> changedEnemies = new ArrayList<>(enemies);
 
 		Iterator<Enemy> i = changedEnemies.iterator();
 		while (i.hasNext()) {
@@ -38,19 +40,11 @@ public class Collision {
 				if (e.getEnemy() == true) {
 					p.setGoodEnemiesPicked(p.getGoodEnemiesPicked() + 1);
 					Win.setGlobalQuality(Win.getGlobalQuality() + 1);
-					try {
-						sound.getGood();
-					} catch (Throwable e1) {
-						e1.printStackTrace();
-					}
+					new Thread(() -> new SoundResource().getSound(COLLISION_WITH_GOOD_UNIT_SOUND).play()).start();
 				} else {
 					p.setBadEnemiesPicked(p.getBadEnemiesPicked() + 1);
 					Win.setGlobalQuality(Win.getGlobalQuality() - 1);
-					try {
-						sound.getBad();
-					} catch (Throwable e1) {
-						e1.printStackTrace();
-					}
+					new Thread(() -> new SoundResource().getSound(COLLISION_WITH_BAD_UNIT_SOUND).play()).start();
 					// JOptionPane.showMessageDialog(null, "Loooose !!!");
 					// System.exit(1);
 				}
@@ -83,14 +77,8 @@ public class Collision {
 	}
 
 	public static void paintEnemies(Graphics g, List<Enemy> enemies) {
-
-		List<Enemy> syncEnemies = new ArrayList<Enemy>(enemies);
-		// List<Enemy> syncEnemies = new CopyOnWriteArrayList<Enemy>(enemies);//
-		// /////////!!!!!!!
-		Iterator<Enemy> i = syncEnemies.iterator();
-
-		while (i.hasNext()) {
-			Enemy e = i.next();/////////// ??????????????????
+		List<Enemy> syncEnemies = new ArrayList<>(enemies);
+		for (Enemy e : syncEnemies) {
 			e.move();
 			g.drawImage(e.img, e.x, e.y, null);
 		}

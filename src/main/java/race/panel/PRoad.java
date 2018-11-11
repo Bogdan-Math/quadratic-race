@@ -1,7 +1,5 @@
 package race.panel;
 
-import javafx.scene.media.AudioClip;
-import race.multimedia.sound.SoundResource;
 import race.effect.StatisticShow;
 import race.event.KeysAdapter;
 import race.frame.Road;
@@ -9,6 +7,7 @@ import race.logic.Collision;
 import race.logic.Mode;
 import race.logic.Result;
 import race.logic.Win;
+import race.multimedia.sound.SoundResource;
 import race.object.Enemy;
 import race.object.Player;
 
@@ -21,6 +20,8 @@ import java.util.List;
 import java.util.Random;
 
 public class PRoad extends JPanel implements ActionListener, Runnable {
+
+	private static final String MAIN_SOUND = "race/multimedia/sound/main.mp3";
 
 	private Mode mode;
 	private int winLine = 25000;
@@ -48,7 +49,7 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 
 	private StatisticShow speed = new StatisticShow(this);
 	public Thread enemiesFactory = new Thread(this);
-	public Thread audioThread = new Thread(() -> new SoundResource().getSound().play());
+	public Thread audioThread = new Thread(() -> new SoundResource().getSound(MAIN_SOUND).play());
 
 	private List<Enemy> enemies = new ArrayList<>();
 	private Road Froad;
@@ -95,9 +96,9 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 		player.move();
 		repaint();
 
-		enemies = Collision.enemyVsEnemies(enemies);
+		enemies = Collision.unitVsUnits(enemies);
 		enemies = Collision.removeEnemies(enemies, player);
-		enemies = Collision.playerVsEnemies(enemies, player);
+		enemies = Collision.playerVsUnits(enemies, player);
 	}
 
 	@Override
