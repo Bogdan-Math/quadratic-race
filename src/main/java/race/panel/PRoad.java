@@ -4,10 +4,9 @@ import race.effect.StatisticShow;
 import race.event.KeysAdapter;
 import race.frame.Road;
 import race.logic.Collision;
-import race.logic.Mode;
 import race.logic.Result;
 import race.logic.Win;
-import race.multimedia.sound.SoundResource;
+import race.model.mode.ModeModel;
 import race.object.Enemy;
 import race.object.Player;
 
@@ -19,11 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static race.multimedia.sound.SoundResource.sound;
+
 public class PRoad extends JPanel implements ActionListener, Runnable {
 
 	private static final String MAIN_SOUND = "race/multimedia/sound/main.mp3";
 
-	private Mode mode;
+	private ModeModel modeModel;
 	private int winLine = 25000;
 
 	public int getWinLine() {
@@ -49,13 +50,13 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 
 	private StatisticShow speed = new StatisticShow(this);
 	public Thread enemiesFactory = new Thread(this);
-	public Thread audioThread = new Thread(() -> new SoundResource().sound(MAIN_SOUND).play());
+	public Thread audioThread = new Thread(() -> sound(MAIN_SOUND).play());
 
 	private List<Enemy> enemies = new ArrayList<>();
 	private Road Froad;
 
-	public PRoad(Mode mode, Road Froad) {
-		this.mode = mode;
+	public PRoad(ModeModel modeModel, Road Froad) {
+		this.modeModel = modeModel;
 		this.Froad = Froad;
 		setPreferredSize(new Dimension(road.getWidth(null), road.getHeight(null)));
 		mainTimer.start();
@@ -106,7 +107,7 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 		while (true) {
 			Random rand = new Random();
 			try {
-				Thread.sleep(rand.nextInt(mode.getMillisecondsInterval()));
+				Thread.sleep(rand.nextInt(modeModel.getMillisecondsInterval()));
 
 				enemies.add(new Enemy(rand.nextInt(700), -200, rand.nextInt(50), rand.nextBoolean(), this));
 

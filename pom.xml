@@ -26,12 +26,11 @@
 
         <!--dependencies properties-->
         <jlayer.version>1.0.1</jlayer.version>
-        <javafx-controls.version>11</javafx-controls.version>
+        <javafx.version>11.0.1</javafx.version>
         <testfx.version>4.0.15-alpha</testfx.version>
         <openjfx-monocle.version>jdk-11+26</openjfx-monocle.version>
         <junit-jupiter-engine.version>5.3.1</junit-jupiter-engine.version>
 
-        <javafx-media.version>11.0.1</javafx-media.version>
     </properties>
 
     <!--packaging properties-->
@@ -97,15 +96,15 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx-controls.version}</version>
+            <version>${javafx.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>${javafx-media.version}</version>
+            <version>${javafx.version}</version>
         </dependency>
-
+        
         <dependency>
             <groupId>org.testfx</groupId>
             <artifactId>testfx-core</artifactId>
