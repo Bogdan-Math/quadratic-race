@@ -49,7 +49,7 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 
 	private StatisticShow speed = new StatisticShow(this);
 	public Thread enemiesFactory = new Thread(this);
-	public Thread audioThread = new Thread(() -> new SoundResource().getSound(MAIN_SOUND).play());
+	public Thread audioThread = new Thread(() -> new SoundResource().sound(MAIN_SOUND).play());
 
 	private List<Enemy> enemies = new ArrayList<>();
 	private Road Froad;

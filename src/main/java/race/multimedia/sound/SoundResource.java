@@ -8,8 +8,8 @@ import static java.util.Objects.requireNonNull;
 
 public class SoundResource {
 
-    public AudioClip getSound(String pathToSound) {
-        URL url = requireNonNull(getClass().getClassLoader().getResource(pathToSound));
+    public static AudioClip sound(String pathToSound) {
+        URL url = requireNonNull(SoundResource.class.getClassLoader().getResource(pathToSound));
         return new AudioClip(url.toExternalForm());
     }
 }

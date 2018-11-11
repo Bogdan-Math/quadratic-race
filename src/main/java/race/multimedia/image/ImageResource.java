@@ -8,8 +8,8 @@ import static java.util.Objects.requireNonNull;
 
 public class ImageResource {
 
-    public Image getImage(String pathToImage) {
-        InputStream inputStream = requireNonNull(getClass().getClassLoader().getResourceAsStream(pathToImage));
+    public static Image image(String pathToImage) {
+        InputStream inputStream = requireNonNull(ImageResource.class.getClassLoader().getResourceAsStream(pathToImage));
         return new Image(inputStream);
     }
 }

@@ -1,6 +1,5 @@
 package race.logic;
 
-import race.multimedia.sound.SoundResource;
 import race.object.Enemy;
 import race.object.Player;
 
@@ -8,6 +7,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import static race.multimedia.sound.SoundResource.sound;
 
 public class Collision {
 
@@ -40,11 +41,11 @@ public class Collision {
 				if (e.getEnemy() == true) {
 					p.setGoodEnemiesPicked(p.getGoodEnemiesPicked() + 1);
 					Win.setGlobalQuality(Win.getGlobalQuality() + 1);
-					new Thread(() -> new SoundResource().getSound(COLLISION_WITH_GOOD_UNIT_SOUND).play()).start();
+					new Thread(() -> sound(COLLISION_WITH_GOOD_UNIT_SOUND).play()).start();
 				} else {
 					p.setBadEnemiesPicked(p.getBadEnemiesPicked() + 1);
 					Win.setGlobalQuality(Win.getGlobalQuality() - 1);
-					new Thread(() -> new SoundResource().getSound(COLLISION_WITH_BAD_UNIT_SOUND).play()).start();
+					new Thread(() -> sound(COLLISION_WITH_BAD_UNIT_SOUND).play()).start();
 					// JOptionPane.showMessageDialog(null, "Loooose !!!");
 					// System.exit(1);
 				}

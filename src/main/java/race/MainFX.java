@@ -4,8 +4,9 @@ import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import race.multimedia.image.ImageResource;
 import race.scene.ModeScene;
+
+import static race.multimedia.image.ImageResource.image;
 
 public class MainFX extends Application {
 
@@ -28,7 +29,7 @@ public class MainFX extends Application {
 
     private void fillHeaderFor(Stage stage) {
         stage.setTitle(TITLE);
-        stage.getIcons().add(new ImageResource().getImage(ICON));
+        stage.getIcons().add(image(ICON));
     }
 
     private void moveToCenter(Stage stage) {
