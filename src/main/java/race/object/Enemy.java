@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 import race.panel.PRoad;
 
-public class Enemy extends MovingUnit {
+public class Enemy extends Unit {
 
 	private PRoad road;
 

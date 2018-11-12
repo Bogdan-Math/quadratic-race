@@ -39,10 +39,7 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 		return this.road;
 	}
 
-	private Player player = new Player(350, this.road.getHeight(null) - 175, 0,
-			new ImageIcon(getClass().getClassLoader().getResource("race/multimedia/image/player.png")).getImage(),
-			new ImageIcon(getClass().getClassLoader().getResource("race/multimedia/image/playerRight.png")).getImage(),
-			new ImageIcon(getClass().getClassLoader().getResource("race/multimedia/image/playerLeft.png")).getImage(), this);
+	private Player player = new Player(350, this.road.getHeight(null) - 175, 0, this);
 
 	public Player getPlayer() {
 		return this.player;

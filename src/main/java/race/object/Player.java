@@ -5,18 +5,21 @@ import java.awt.event.KeyEvent;
 
 import race.panel.PRoad;
 
-public class Player extends MovingUnit {
+import javax.swing.*;
+
+public class Player extends Unit {
 
 	private final Image imgRight;
 	private final Image imgLeft;
 	private final Image imgCenter;
+
 	private int high;
 
-	public Player(int x, int y, int v, Image img, Image imgRight, Image imgLeft, PRoad road) {
-		this.imgCenter = img;
-		this.imgRight = imgRight;
-		this.imgLeft = imgLeft;
-		this.img = img;
+	public Player(int x, int y, int v, PRoad road) {
+		this.imgCenter = new ImageIcon(getClass().getClassLoader().getResource("race/multimedia/image/player.png")).getImage();
+		this.imgRight = new ImageIcon(getClass().getClassLoader().getResource("race/multimedia/image/playerRight.png")).getImage();
+		this.imgLeft = new ImageIcon(getClass().getClassLoader().getResource("race/multimedia/image/playerLeft.png")).getImage();
+		this.img = imgCenter;
 		this.x = x;
 		this.y = y;
 		this.v = v;

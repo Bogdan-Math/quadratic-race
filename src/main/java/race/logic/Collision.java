@@ -21,7 +21,7 @@ public class Collision {
 
 		for (int i = 0; i < changedEnemies.size(); i++) {
 			for (int j = i + 1; j < changedEnemies.size(); j++) {
-				if (changedEnemies.get(i).getRect().intersects(changedEnemies.get(j).getRect())) {
+				if (changedEnemies.get(i).getRectangle().intersects(changedEnemies.get(j).getRectangle())) {
 					changedEnemies.remove(j);
 				}
 			}
@@ -36,7 +36,7 @@ public class Collision {
 		Iterator<Enemy> i = changedEnemies.iterator();
 		while (i.hasNext()) {
 			Enemy e = i.next();
-			if (p.getRect().intersects(e.getRect())) {
+			if (p.getRectangle().intersects(e.getRectangle())) {
 				i.remove();
 				if (e.getEnemy() == true) {
 					p.setGoodEnemiesPicked(p.getGoodEnemiesPicked() + 1);
