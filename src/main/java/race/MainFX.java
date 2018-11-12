@@ -5,7 +5,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import race.controller.ModeController;
+import race.controller.mode.ModeController;
 import race.model.mode.ModeModel;
 import race.view.mode.ModePane;
 
@@ -24,7 +24,7 @@ public class MainFX extends Application {
     public void start(Stage stage) {
         fillHeaderFor(stage);
 
-        stage.setScene(initScene());
+        stage.setScene(newModeScene());
         stage.show();
 
         moveToCenter(stage);
@@ -35,7 +35,7 @@ public class MainFX extends Application {
         stage.getIcons().add(image(ICON));
     }
 
-    private Scene initScene() {
+    private Scene newModeScene() {
         var modeModel   = new ModeModel();
         var modePane    = new ModePane();
 

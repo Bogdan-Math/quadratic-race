@@ -1,4 +1,4 @@
-package race.controller;
+package race.controller.mode;
 
 import race.frame.Road;
 import race.model.mode.ModeModel;
