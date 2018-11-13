@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
 
-public class ModePane extends HBox {
+public class ModeView extends HBox {
 
     private static final String EASY = "EASY";
     private static final String NORMAL = "NORMAL";
@@ -22,7 +22,7 @@ public class ModePane extends HBox {
     private final ModeButton normalModeButton;
     private final ModeButton hardModeButton;
 
-    public ModePane() {
+    public ModeView() {
         easyModeButton = new ModeButton(EASY_BUTTON_PICTURE, EASY);
         normalModeButton = new ModeButton(NORMAL_BUTTON_PICTURE, NORMAL);
         hardModeButton = new ModeButton(HARD_BUTTON_PICTURE, HARD);

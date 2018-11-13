@@ -6,8 +6,11 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import race.controller.mode.ModeController;
+import race.controller.road.RoadController;
 import race.model.mode.ModeModel;
-import race.view.mode.ModePane;
+import race.model.road.RoadModel;
+import race.view.mode.ModeView;
+import race.view.road.RoadView;
 
 import static race.multimedia.image.ImageResource.image;
 
@@ -27,6 +30,11 @@ public class MainFX extends Application {
         stage.setScene(newModeScene());
         stage.show();
 
+        Scene scene = newRoadScene();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+
         moveToCenter(stage);
     }
 
@@ -36,13 +44,15 @@ public class MainFX extends Application {
     }
 
     private Scene newModeScene() {
-        var modeModel   = new ModeModel();
-        var modePane    = new ModePane();
-
-        new ModeController(modeModel, modePane);
-
-        return new Scene(modePane);
+        return new ModeController(new ModeModel(), new ModeView())
+                .getModeScene();
     }
+
+    private Scene newRoadScene() {
+        return new RoadController(new RoadModel(), new RoadView())
+                .getRoadScene();
+    }
+
 
     private void moveToCenter(Stage stage) {
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();

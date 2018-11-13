@@ -1,34 +1,39 @@
 package race.controller.mode;
 
+import javafx.scene.Scene;
 import race.frame.Road;
 import race.model.mode.ModeModel;
-import race.view.mode.ModePane;
+import race.view.mode.ModeView;
 
 public class ModeController {
 
     private ModeModel modeModel;
-    private ModePane modePane;
+    private ModeView modeView;
 
-    public ModeController(ModeModel modeModel, ModePane modePane) {
+    public ModeController(ModeModel modeModel, ModeView modeView) {
         this.modeModel = modeModel;
-        this.modePane = modePane;
+        this.modeView = modeView;
         setHandlers();
     }
 
     private void setHandlers() {
-        modePane.setEasyModeButtonClickHandler(event -> {
+        modeView.setEasyModeButtonClickHandler(event -> {
             modeModel.setEasyMode();
             new Road(modeModel);
         });
 
-        modePane.setNormalModeButtonClickHandler(event -> {
+        modeView.setNormalModeButtonClickHandler(event -> {
             modeModel.setNormalMode();
             new Road(modeModel);
         });
 
-        modePane.setHardModeButtonClickHandler(event -> {
+        modeView.setHardModeButtonClickHandler(event -> {
             modeModel.setHardMode();
             new Road(modeModel);
         });
+    }
+
+    public Scene getModeScene() {
+        return new Scene(modeView);
     }
 }
