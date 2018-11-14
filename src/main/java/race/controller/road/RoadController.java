@@ -1,7 +1,6 @@
 package race.controller.road;
 
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import race.model.road.RoadModel;
 import race.view.road.RoadView;
@@ -18,15 +17,19 @@ public class RoadController {
 
     public Scene getRoadScene() {
         Scene scene = new Scene(roadView);
-        ImageView imageView = roadView.getImageView();
         scene.setOnKeyPressed(keyEvent -> {
             KeyCode keyCode = keyEvent.getCode();
-            if (keyCode.equals(KeyCode.W))
-                imageView.setTranslateY(imageView.getTranslateY() + 5);
-            if (keyCode.equals(KeyCode.S))
-                imageView.setTranslateY(imageView.getTranslateY() - 5);
+            System.out.println(keyCode);
+            if (keyCode.equals(KeyCode.W)) roadView.moveUp();
+            if (keyCode.equals(KeyCode.S)) roadView.moveDown();
         });
 
+        scene.setOnKeyReleased(keyEvent -> {
+            KeyCode keyCode = keyEvent.getCode();
+            System.out.println(keyCode);
+            if (keyCode.equals(KeyCode.W)) roadView.moveDown();
+            if (keyCode.equals(KeyCode.S)) roadView.moveUp();
+        });
         return scene;
     }
 }

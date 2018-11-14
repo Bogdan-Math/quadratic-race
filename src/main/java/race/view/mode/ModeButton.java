@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 
 import static race.multimedia.image.ImageResource.image;
 
-//TODO: move to ModeView
+//TODO: moveUp to ModeView
 class ModeButton extends Button {
 
     ModeButton(String pathToImage, String text) {
