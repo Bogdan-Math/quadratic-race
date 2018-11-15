@@ -1,46 +1,58 @@
 package race.view.road;
 
 import javafx.animation.AnimationTimer;
-import javafx.animation.TranslateTransition;
-import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
+import javafx.scene.layout.Pane;
 
-public class RoadView extends Group {
+public class RoadView extends Pane {
 
-    private ImageView imageViewMiddle;
+    private ImageView imageView0;
+    private ImageView imageView1;
 
-    private TranslateTransition transition;
+    private AnimationTimer timer;
 
-    double v = 0;
+    private double v = 0;
+    private double dv = 0;
 
     public RoadView() {
         Image image = new Image("race/multimedia/image/road.png");
+        setMaxWidth(image.getWidth());
+        setMaxHeight(image.getHeight());
 
-        imageViewMiddle = new ImageView(image);
+        imageView0 = new ImageView(image);
+        imageView1 = new ImageView(image);
+        imageView1.setTranslateY( - image.getHeight() );
 
-        getChildren().add(imageViewMiddle);
+        getChildren().add(imageView0);
+        getChildren().add(imageView1);
+
+        timer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                v += dv;
+                if (v <= 0)
+                    v = 0;
+                if (v >= 10)
+                    v = 10;
+
+                imageView0.setTranslateY(imageView0.getTranslateY() + v);
+                imageView1.setTranslateY(imageView1.getTranslateY() + v);
+            }
+        };
+        timer.start();
+
     }
 
     public void moveUp() {
-        transition = new TranslateTransition();
-        transition.setDuration(Duration.millis(500));
-        transition.setNode(imageViewMiddle);
-        v += 10;
-        transition.setByY(v);
-        transition.setAutoReverse(false);
-        transition.play();
+        dv = 0.2;
     }
 
     public void moveDown() {
-        transition = new TranslateTransition();
-        transition.setDuration(Duration.millis(500));
-        transition.setNode(imageViewMiddle);
-        v -= 10;
-        transition.setByY(v);
-        transition.setAutoReverse(false);
-        transition.play();
+        dv = -0.4;
     }
 
+    public void decreaseSpeed() {
+        dv = -0.2;
+    }
 }

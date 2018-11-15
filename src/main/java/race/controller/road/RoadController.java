@@ -27,8 +27,8 @@ public class RoadController {
         scene.setOnKeyReleased(keyEvent -> {
             KeyCode keyCode = keyEvent.getCode();
             System.out.println(keyCode);
-            if (keyCode.equals(KeyCode.W)) roadView.moveDown();
-            if (keyCode.equals(KeyCode.S)) roadView.moveUp();
+            if (keyCode.equals(KeyCode.W)) roadView.decreaseSpeed();
+            if (keyCode.equals(KeyCode.S)) roadView.decreaseSpeed();
         });
         return scene;
     }
