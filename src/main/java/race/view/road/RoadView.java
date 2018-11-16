@@ -5,12 +5,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.Collections;
+import java.util.LinkedList;
 
 public class RoadView extends Pane {
 
-    private Queue<ImageView> roadQueue;
+    private LinkedList<ImageView> roadViewList;
 
     private AnimationTimer timer;
 
@@ -18,24 +18,27 @@ public class RoadView extends Pane {
     private double dv = 0;
 
     public RoadView() {
-        Image image = new Image("race/multimedia/image/road.png");
-        setMaxWidth(image.getWidth());
-        setMaxHeight(image.getHeight());
+        roadViewList = new LinkedList<>();
 
-        roadQueue = new ArrayBlockingQueue<>(3);
+        Image image = new Image("race/multimedia/image/road.png");
+
+        setMaxWidth(image.getWidth());
+        final double imageHeight = image.getHeight();
+        setMaxHeight(imageHeight);
+
         var topImageView = new ImageView(image);
         var mainImageView = new ImageView(image);
         var bottomImageView = new ImageView(image);
-        topImageView.setTranslateY(-image.getHeight());
-        bottomImageView.setTranslateY(image.getHeight());
+        topImageView.setTranslateY(-imageHeight);
+        bottomImageView.setTranslateY(imageHeight);
 
-//        roadQueue.add(bottomImageView);
-//        roadQueue.add(mainImageView);
-//        roadQueue.add(topImageView);
+        roadViewList.add(bottomImageView);
+        roadViewList.add(mainImageView);
+        roadViewList.add(topImageView);
 
-        getChildren().add(topImageView);
-        getChildren().add(mainImageView);
         getChildren().add(bottomImageView);
+        getChildren().add(mainImageView);
+        getChildren().add(topImageView);
 
         timer = new AnimationTimer() {
 
@@ -47,18 +50,18 @@ public class RoadView extends Pane {
                 if (v >= 10)
                     v = 10;
 
-//                ImageView bottom = roadQueue.poll();
+                ImageView first = roadViewList.getFirst();
+                ImageView last = roadViewList.getLast();
+                if (first.getTranslateY() >= imageHeight) {
+                    first.setTranslateY(last.getTranslateY() - imageHeight);
+                    Collections.swap(roadViewList, 0, 2);
+                }
 
-//                if (bottom.getTranslateY() >= image.getHeight()) {
-//                    roadQueue.add(bottom);
-//                }
+                roadViewList.forEach(imageView -> imageView.setTranslateY(imageView.getTranslateY() + v));
 
-//                roadQueue.forEach(imageView ->
-//                        imageView.setTranslateY(imageView.getTranslateY() + v));
-
-                topImageView.setTranslateY(topImageView.getTranslateY() + v);
-                mainImageView.setTranslateY(mainImageView.getTranslateY() + v);
-                bottomImageView.setTranslateY(bottomImageView.getTranslateY() + v);
+//                topImageView.setTranslateY(topImageView.getTranslateY() + v);
+//                mainImageView.setTranslateY(mainImageView.getTranslateY() + v);
+//                bottomImageView.setTranslateY(bottomImageView.getTranslateY() + v);
             }
         };
         timer.start();
