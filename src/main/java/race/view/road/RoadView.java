@@ -5,10 +5,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+
 public class RoadView extends Pane {
 
-    private ImageView imageView0;
-    private ImageView imageView1;
+    private Queue<ImageView> roadQueue;
 
     private AnimationTimer timer;
 
@@ -20,14 +22,23 @@ public class RoadView extends Pane {
         setMaxWidth(image.getWidth());
         setMaxHeight(image.getHeight());
 
-        imageView0 = new ImageView(image);
-        imageView1 = new ImageView(image);
-        imageView1.setTranslateY( - image.getHeight() );
+        roadQueue = new ArrayBlockingQueue<>(3);
+        var topImageView = new ImageView(image);
+        var mainImageView = new ImageView(image);
+        var bottomImageView = new ImageView(image);
+        topImageView.setTranslateY(-image.getHeight());
+        bottomImageView.setTranslateY(image.getHeight());
 
-        getChildren().add(imageView0);
-        getChildren().add(imageView1);
+//        roadQueue.add(bottomImageView);
+//        roadQueue.add(mainImageView);
+//        roadQueue.add(topImageView);
+
+        getChildren().add(topImageView);
+        getChildren().add(mainImageView);
+        getChildren().add(bottomImageView);
 
         timer = new AnimationTimer() {
+
             @Override
             public void handle(long l) {
                 v += dv;
@@ -36,8 +47,18 @@ public class RoadView extends Pane {
                 if (v >= 10)
                     v = 10;
 
-                imageView0.setTranslateY(imageView0.getTranslateY() + v);
-                imageView1.setTranslateY(imageView1.getTranslateY() + v);
+//                ImageView bottom = roadQueue.poll();
+
+//                if (bottom.getTranslateY() >= image.getHeight()) {
+//                    roadQueue.add(bottom);
+//                }
+
+//                roadQueue.forEach(imageView ->
+//                        imageView.setTranslateY(imageView.getTranslateY() + v));
+
+                topImageView.setTranslateY(topImageView.getTranslateY() + v);
+                mainImageView.setTranslateY(mainImageView.getTranslateY() + v);
+                bottomImageView.setTranslateY(bottomImageView.getTranslateY() + v);
             }
         };
         timer.start();
