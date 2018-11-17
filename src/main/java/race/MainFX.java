@@ -53,7 +53,6 @@ public class MainFX extends Application {
                 .getRoadScene();
     }
 
-
     private void moveToCenter(Stage stage) {
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
