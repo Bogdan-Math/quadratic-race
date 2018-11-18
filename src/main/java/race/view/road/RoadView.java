@@ -1,82 +1,56 @@
 package race.view.road;
 
-import javafx.animation.AnimationTimer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-import java.util.Collections;
 import java.util.LinkedList;
+
+import static java.util.Collections.swap;
+import static race.multimedia.image.ImageResource.image;
 
 public class RoadView extends Pane {
 
-    private LinkedList<ImageView> roadViewList;
+    public static final Image ROAD_IMAGE = image("race/multimedia/image/road.png");
 
-    private AnimationTimer timer;
-
-    private double v = 0;
-    private double dv = 0;
+    private LinkedList<ImageView> roadPieces;
 
     public RoadView() {
-        roadViewList = new LinkedList<>();
+        roadPieces = new LinkedList<>();
 
-        Image image = new Image("race/multimedia/image/road.png");
+        setMaxWidth(ROAD_IMAGE.getWidth());
+        setMaxHeight(ROAD_IMAGE.getHeight());
 
-        setMaxWidth(image.getWidth());
-        final double imageHeight = image.getHeight();
-        setMaxHeight(imageHeight);
+        var topImageView = new ImageView(ROAD_IMAGE);
+        var mainImageView = new ImageView(ROAD_IMAGE);
+        var bottomImageView = new ImageView(ROAD_IMAGE);
+        topImageView.setTranslateY(-ROAD_IMAGE.getHeight());
+        bottomImageView.setTranslateY(ROAD_IMAGE.getHeight());
 
-        var topImageView = new ImageView(image);
-        var mainImageView = new ImageView(image);
-        var bottomImageView = new ImageView(image);
-        topImageView.setTranslateY(-imageHeight);
-        bottomImageView.setTranslateY(imageHeight);
-
-        roadViewList.add(bottomImageView);
-        roadViewList.add(mainImageView);
-        roadViewList.add(topImageView);
+        roadPieces.add(bottomImageView);
+        roadPieces.add(mainImageView);
+        roadPieces.add(topImageView);
 
         getChildren().add(bottomImageView);
         getChildren().add(mainImageView);
         getChildren().add(topImageView);
-
-        timer = new AnimationTimer() {
-
-            @Override
-            public void handle(long l) {
-                v += dv;
-                if (v <= 0)
-                    v = 0;
-                if (v >= 10)
-                    v = 10;
-
-                ImageView first = roadViewList.getFirst();
-                ImageView last = roadViewList.getLast();
-                if (first.getTranslateY() >= imageHeight) {
-                    first.setTranslateY(last.getTranslateY() - imageHeight);
-                    Collections.swap(roadViewList, 0, 2);
-                }
-
-                roadViewList.forEach(imageView -> imageView.setTranslateY(imageView.getTranslateY() + v));
-
-//                topImageView.setTranslateY(topImageView.getTranslateY() + v);
-//                mainImageView.setTranslateY(mainImageView.getTranslateY() + v);
-//                bottomImageView.setTranslateY(bottomImageView.getTranslateY() + v);
-            }
-        };
-        timer.start();
-
     }
 
-    public void moveUp() {
-        dv = 0.2;
+    public LinkedList<ImageView> getRoadPieces() {
+        return roadPieces;
     }
 
-    public void moveDown() {
-        dv = -0.4;
-    }
+    public void move() {
+        var roadPieces = getRoadPieces();
+        var first = roadPieces.getFirst();
+        var last = roadPieces.getLast();
+        if (first.getTranslateY() >= ROAD_IMAGE.getHeight()) {
+            first.setTranslateY(last.getTranslateY() - ROAD_IMAGE.getHeight());
+            int firstElementIndex = 0;
+            int lastElementIndex = 2;
+            swap(roadPieces, firstElementIndex, lastElementIndex);
+        }
 
-    public void decreaseSpeed() {
-        dv = -0.2;
+
     }
 }

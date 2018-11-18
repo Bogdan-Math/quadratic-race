@@ -3,7 +3,12 @@ package race.view.mode;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+
+import static race.multimedia.image.ImageResource.image;
 
 public class ModeView extends HBox {
 
@@ -11,21 +16,21 @@ public class ModeView extends HBox {
     private static final String NORMAL = "NORMAL";
     private static final String HARD = "HARD";
 
-    private static final String EASY_BUTTON_PICTURE = "race/multimedia/image/1_easyButton.png";
-    private static final String NORMAL_BUTTON_PICTURE = "race/multimedia/image/2_normalButton.png";
-    private static final String HARD_BUTTON_PICTURE = "race/multimedia/image/3_hardButton.png";
+    private static final Image EASY_BUTTON_IMAGE = image("race/multimedia/image/1_easyButton.png");
+    private static final Image NORMAL_BUTTON_IMAGE = image("race/multimedia/image/2_normalButton.png");
+    private static final Image HARD_BUTTON_IMAGE = image("race/multimedia/image/3_hardButton.png");
 
     private static final int PADDING = 20;
     private static final int SPACING = PADDING / 2;
 
-    private final ModeButton easyModeButton;
-    private final ModeButton normalModeButton;
-    private final ModeButton hardModeButton;
+    private final Button easyModeButton;
+    private final Button normalModeButton;
+    private final Button hardModeButton;
 
     public ModeView() {
-        easyModeButton = new ModeButton(EASY_BUTTON_PICTURE, EASY);
-        normalModeButton = new ModeButton(NORMAL_BUTTON_PICTURE, NORMAL);
-        hardModeButton = new ModeButton(HARD_BUTTON_PICTURE, HARD);
+        easyModeButton = newModeButton(EASY_BUTTON_IMAGE, EASY);
+        normalModeButton = newModeButton(NORMAL_BUTTON_IMAGE, NORMAL);
+        hardModeButton = newModeButton(HARD_BUTTON_IMAGE, HARD);
 
         getChildren().addAll(
                 easyModeButton,
@@ -35,6 +40,13 @@ public class ModeView extends HBox {
 
         setPadding(new Insets(PADDING));
         setSpacing(SPACING);
+    }
+
+    private Button newModeButton(Image image, String text) {
+        var modeButton = new Button();
+        modeButton.setText(text);
+        modeButton .setGraphic(new ImageView(image));
+        return modeButton;
     }
 
     public void setEasyModeButtonClickHandler(EventHandler<ActionEvent> clickHandler) {

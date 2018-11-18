@@ -11,6 +11,7 @@ public class ModeModel {
     public ModeModel() {
     }
 
+    //TODO: remove it after global refactor
     public ModeModel(int millisecondsInterval) {
         this.millisecondsInterval = millisecondsInterval;
     }
