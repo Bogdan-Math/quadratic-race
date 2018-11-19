@@ -20,9 +20,9 @@ public class RoadController {
 
             @Override
             public void handle(long now) {
-                roadModel.move();
+                roadModel.getPlayerModel().move();
                 roadView.move();
-                roadView.getRoadPieces().forEach(imageView -> move(imageView, roadModel.getVelocity()));
+                roadView.getRoadPieces().forEach(imageView -> move(imageView, roadModel.getPlayerModel().getVelocity()));
             }
         }.start();
 
@@ -32,14 +32,14 @@ public class RoadController {
         Scene scene = new Scene(roadView);
         scene.setOnKeyPressed(keyEvent -> {
             KeyCode keyCode = keyEvent.getCode();
-            if (keyCode.equals(KeyCode.W)) roadModel.changeVelocity(0.2);
-            if (keyCode.equals(KeyCode.S)) roadModel.changeVelocity(-0.4);
+            if (keyCode.equals(KeyCode.W)) roadModel.getPlayerModel().changeVelocity(0.2);
+            if (keyCode.equals(KeyCode.S)) roadModel.getPlayerModel().changeVelocity(-0.4);
         });
 
         scene.setOnKeyReleased(keyEvent -> {
             KeyCode keyCode = keyEvent.getCode();
-            if (keyCode.equals(KeyCode.W)) roadModel.changeVelocity(-0.2);
-            if (keyCode.equals(KeyCode.S)) roadModel.changeVelocity(-0.2);
+            if (keyCode.equals(KeyCode.W)) roadModel.getPlayerModel().changeVelocity(-0.2);
+            if (keyCode.equals(KeyCode.S)) roadModel.getPlayerModel().changeVelocity(-0.2);
         });
         return scene;
     }
