@@ -1,6 +1,6 @@
-package race.model.player;
+package race.model;
 
-public class PlayerModel {
+public class Player {
 
     private static final int MIN_VELOCITY = 0;
     private static final int MAX_VELOCITY = 10;
@@ -21,5 +21,4 @@ public class PlayerModel {
     public double getVelocity() {
         return v;
     }
-
 }

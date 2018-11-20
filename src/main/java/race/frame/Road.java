@@ -1,13 +1,13 @@
 package race.frame;
 
-import race.model.mode.ModeModel;
+import race.model.Mode;
 import race.panel.PRoad;
 
 public class Road extends BaseFrame {
 
-	public Road(ModeModel modeModel) {
+	public Road(Mode mode) {
 
-		PRoad road = new PRoad(modeModel, this);
+		PRoad road = new PRoad(mode, this);
 
 		int sizeX = road.getRoad().getWidth(null);
 		int sizeY = road.getRoad().getHeight(null);
