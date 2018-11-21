@@ -2,16 +2,9 @@ package race;
 
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import race.controller.GameController;
-import race.controller.mode.ModeController;
-import race.controller.road.RoadController;
-import race.model.Mode;
-import race.model.Road;
-import race.view.mode.ModeView;
-import race.view.road.RoadView;
 
 import static race.multimedia.image.ImageResource.image;
 

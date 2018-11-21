@@ -46,7 +46,6 @@ public class GameController {
     }
 
     public Scene getModeScene() {
-        Scene modeScene = new Scene(modeView);
         modeView.setEasyModeButtonClickHandler(event -> {
             this.road.setEasyMode();
         });
@@ -58,7 +57,7 @@ public class GameController {
         modeView.setHardModeButtonClickHandler(event -> {
             this.road.setHardMode();
         });
-        return modeScene;
+        return new Scene(modeView);
     }
 
     private void move(ImageView imageView, double v) {

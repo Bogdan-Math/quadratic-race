@@ -3,6 +3,7 @@ package race.view.road;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import race.model.Road;
 
 import java.util.LinkedList;
 
@@ -50,7 +51,5 @@ public class RoadView extends Pane {
             int lastElementIndex = 2;
             swap(roadPieces, firstElementIndex, lastElementIndex);
         }
-
-
     }
 }
