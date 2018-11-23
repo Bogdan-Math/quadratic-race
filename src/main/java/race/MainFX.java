@@ -1,18 +1,17 @@
 package race;
 
 import javafx.application.Application;
-import javafx.geometry.Rectangle2D;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import race.bus.EventBus;
 import race.bus.EventPublisher;
 import race.mvc.controller.mode.ModeController;
+import race.mvc.controller.road.RoadController;
 import race.mvc.model.mode.ModeModelEvent;
 import race.mvc.view.mode.ModeViewEvent;
 
-import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static race.multimedia.image.ImageResource.image;
 
 public class MainFX extends Application {
@@ -28,22 +27,23 @@ public class MainFX extends Application {
     public void start(Stage stage) {
         fillHeaderFor(stage);
 
-        List<String> events = Arrays.asList(
+
+        List<String> events = asList(
+
+                ModeViewEvent.SHOW.name(),
                 ModeViewEvent.CLICK_EASY_MODE_BUTTON.name(),
                 ModeViewEvent.CLICK_NORMAL_MODE_BUTTON.name(),
                 ModeViewEvent.CLICK_HARD_MODE_BUTTON.name(),
+
                 ModeModelEvent.MODE_INITIALIZED.name()
         );
 
         EventPublisher eventPublisher = new EventBus(events);
 
-        stage.setScene(new ModeController(eventPublisher).getScene());
-        stage.show();
+        new ModeController(eventPublisher, stage);
+        new RoadController(eventPublisher, stage);
 
-        stage.setResizable(false);
-        stage.show();
-
-        moveToCenter(stage);
+        eventPublisher.publish(ModeViewEvent.SHOW.name());
     }
 
     private void fillHeaderFor(Stage stage) {
@@ -51,9 +51,4 @@ public class MainFX extends Application {
         stage.getIcons().add(image(ICON));
     }
 
-    private void moveToCenter(Stage stage) {
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
-        stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
-    }
 }

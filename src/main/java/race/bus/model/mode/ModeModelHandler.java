@@ -1,4 +1,4 @@
-package race.bus.mode.model;
+package race.bus.model.mode;
 
 import race.bus.EventHandler;
 import race.mvc.model.mode.ModeModel;

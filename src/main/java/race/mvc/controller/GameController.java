@@ -7,7 +7,7 @@ import javafx.scene.input.KeyCode;
 import race.bus.EventBus;
 import race.mvc.model.mode.ModeModel;
 import race.mvc.model.Player;
-import race.mvc.model.Road;
+import race.mvc.model.RoadModel;
 import race.mvc.view.mode.ModeView;
 import race.mvc.view.player.PlayerView;
 import race.mvc.view.road.RoadView;
@@ -17,7 +17,7 @@ public class GameController {
     private ModeModel modeModel;
     private ModeView modeView;
 
-    private Road road;
+    private RoadModel roadModel;
     private RoadView roadView;
 
     private Player player;
@@ -26,7 +26,7 @@ public class GameController {
     public GameController() {
         this.modeModel = new ModeModel(new EventBus(null));
 
-        this.road = new Road();
+        this.roadModel = new RoadModel();
         this.roadView = new RoadView();
 
         this.player = new Player();

@@ -7,6 +7,7 @@ import static java.util.stream.Collectors.toList;
 
 public enum ModeViewEvent {
 
+    SHOW,
     CLICK_EASY_MODE_BUTTON,
     CLICK_NORMAL_MODE_BUTTON,
     CLICK_HARD_MODE_BUTTON;

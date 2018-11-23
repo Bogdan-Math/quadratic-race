@@ -1,4 +1,4 @@
-package race.bus.mode.view;
+package race.bus.view.mode;
 
 import race.mvc.model.mode.ModeModel;
 

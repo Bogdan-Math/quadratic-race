@@ -11,7 +11,7 @@ import static race.multimedia.image.ImageResource.image;
 
 public class RoadView extends Pane {
 
-    public static final Image ROAD_IMAGE = image("race/multimedia/image/road.png");
+    private static final Image ROAD_IMAGE = image("race/multimedia/image/road.png");
 
     private LinkedList<ImageView> roadPieces;
 
