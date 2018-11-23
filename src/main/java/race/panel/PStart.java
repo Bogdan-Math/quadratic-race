@@ -1,7 +1,7 @@
 package race.panel;
 
 import race.event.StartButtonsAdapter;
-import race.model.Mode;
+import race.model.ModeModel;
 
 import java.awt.*;
 
@@ -44,9 +44,9 @@ public class PStart extends JPanel {
 			b3.setVerticalTextPosition(AbstractButton.BOTTOM);
 			b3.setHorizontalTextPosition(AbstractButton.CENTER);
 
-			b1.addActionListener(new StartButtonsAdapter(buttonsFrame, new Mode(1000)));
-			b2.addActionListener(new StartButtonsAdapter(buttonsFrame, new Mode(100)));
-			b3.addActionListener(new StartButtonsAdapter(buttonsFrame, new Mode(10)));
+			b1.addActionListener(new StartButtonsAdapter(buttonsFrame, new ModeModel(1000)));
+			b2.addActionListener(new StartButtonsAdapter(buttonsFrame, new ModeModel(100)));
+			b3.addActionListener(new StartButtonsAdapter(buttonsFrame, new ModeModel(10)));
 
 			add(b1);
 			add(b2);

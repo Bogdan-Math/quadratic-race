@@ -1,12 +1,11 @@
 package race.view.mode;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import race.event.EventPublisher;
 
 import static race.multimedia.image.ImageResource.image;
 
@@ -23,14 +22,20 @@ public class ModeView extends HBox {
     private static final int PADDING = 20;
     private static final int SPACING = PADDING / 2;
 
-    private final Button easyModeButton;
-    private final Button normalModeButton;
-    private final Button hardModeButton;
+    private EventPublisher eventPublisher;
+    private Button easyModeButton;
+    private Button normalModeButton;
+    private Button hardModeButton;
 
-    public ModeView() {
-        easyModeButton = newModeButton(EASY_BUTTON_IMAGE, EASY);
-        normalModeButton = newModeButton(NORMAL_BUTTON_IMAGE, NORMAL);
-        hardModeButton = newModeButton(HARD_BUTTON_IMAGE, HARD);
+    public ModeView(EventPublisher eventPublisher) {
+        this.eventPublisher = eventPublisher;
+        this.easyModeButton = newModeButton(EASY_BUTTON_IMAGE, EASY);
+        this.normalModeButton = newModeButton(NORMAL_BUTTON_IMAGE, NORMAL);
+        this.hardModeButton = newModeButton(HARD_BUTTON_IMAGE, HARD);
+
+        easyModeButton.setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_EASY_MODE_BUTTON.name()));
+        normalModeButton.setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON.name()));
+        hardModeButton.setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_HARD_MODE_BUTTON.name()));
 
         getChildren().addAll(
                 easyModeButton,
@@ -49,15 +54,7 @@ public class ModeView extends HBox {
         return modeButton;
     }
 
-    public void setEasyModeButtonClickHandler(EventHandler<ActionEvent> clickHandler) {
-        easyModeButton.setOnAction(clickHandler);
-    }
-
-    public void setNormalModeButtonClickHandler(EventHandler<ActionEvent> clickHandler) {
-        normalModeButton.setOnAction(clickHandler);
-    }
-
-    public void setHardModeButtonClickHandler(EventHandler<ActionEvent> clickHandler) {
-        hardModeButton.setOnAction(clickHandler);
+    public EventPublisher getEventPublisher() {
+        return eventPublisher;
     }
 }

@@ -6,7 +6,7 @@ import race.frame.Road;
 import race.logic.Collision;
 import race.logic.Result;
 import race.logic.Win;
-import race.model.Mode;
+import race.model.ModeModel;
 import race.object.Enemy;
 import race.object.Player;
 
@@ -24,7 +24,7 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 
 	private static final String MAIN_SOUND = "race/multimedia/sound/main.mp3";
 
-	private Mode mode;
+	private ModeModel modeModel;
 	private int winLine = 25000;
 
 	public int getWinLine() {
@@ -52,8 +52,8 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 	private List<Enemy> enemies = new ArrayList<>();
 	private Road Froad;
 
-	public PRoad(Mode mode, Road Froad) {
-		this.mode = mode;
+	public PRoad(ModeModel modeModel, Road Froad) {
+		this.modeModel = modeModel;
 		this.Froad = Froad;
 		setPreferredSize(new Dimension(road.getWidth(null), road.getHeight(null)));
 		mainTimer.start();
@@ -104,7 +104,7 @@ public class PRoad extends JPanel implements ActionListener, Runnable {
 		while (true) {
 			Random rand = new Random();
 			try {
-				Thread.sleep(rand.nextInt(mode.getMillisecondsInterval()));
+				Thread.sleep(rand.nextInt(modeModel.getMillisecondsInterval()));
 
 				enemies.add(new Enemy(rand.nextInt(700), -200, rand.nextInt(50), rand.nextBoolean(), this));
 

@@ -4,7 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import race.model.Mode;
+import race.model.ModeModel;
 import race.model.Player;
 import race.model.Road;
 import race.view.mode.ModeView;
@@ -13,7 +13,7 @@ import race.view.road.RoadView;
 
 public class GameController {
 
-    private Mode mode;
+    private ModeModel modeModel;
     private ModeView modeView;
 
     private Road road;
@@ -23,8 +23,7 @@ public class GameController {
     private PlayerView playerView;
 
     public GameController() {
-        this.mode = new Mode();
-        this.modeView = new ModeView();
+        this.modeModel = new ModeModel();
 
         this.road = new Road();
         this.roadView = new RoadView();
@@ -43,21 +42,6 @@ public class GameController {
             }
         }.start();
 
-    }
-
-    public Scene getModeScene() {
-        modeView.setEasyModeButtonClickHandler(event -> {
-            this.road.setEasyMode();
-        });
-
-        modeView.setNormalModeButtonClickHandler(event -> {
-            this.road.setNormalMode();
-        });
-
-        modeView.setHardModeButtonClickHandler(event -> {
-            this.road.setHardMode();
-        });
-        return new Scene(modeView);
     }
 
     private void move(ImageView imageView, double v) {

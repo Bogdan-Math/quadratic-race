@@ -1,6 +1,6 @@
 package race.model;
 
-public class Mode {
+public class ModeModel {
 
     private static final int EASY_MODE = 1000;
     private static final int NORMAL_MODE = 100;
@@ -8,11 +8,11 @@ public class Mode {
 
     private int millisecondsInterval;
 
-    public Mode() {
+    public ModeModel() {
     }
 
     //TODO: remove it after global refactor
-    public Mode(int millisecondsInterval) {
+    public ModeModel(int millisecondsInterval) {
         this.millisecondsInterval = millisecondsInterval;
     }
 
