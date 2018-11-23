@@ -1,10 +1,10 @@
 package race.bus.view;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import race.bus.EventHandler;
-
-import static race.StageManipulator.moveToCenter;
 
 public class SceneSetter implements EventHandler {
 
@@ -22,5 +22,11 @@ public class SceneSetter implements EventHandler {
         stage.setResizable(false);
         stage.show();
         moveToCenter(stage);
+    }
+
+    private void moveToCenter(Stage stage) {
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+        stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
     }
 }
