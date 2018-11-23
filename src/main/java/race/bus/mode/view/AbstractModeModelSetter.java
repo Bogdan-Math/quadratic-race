@@ -1,7 +1,7 @@
-package race.controller.mode;
+package race.bus.mode.view;
 
-import race.event.EventHandler;
-import race.model.ModeModel;
+import race.bus.EventHandler;
+import race.mvc.model.mode.ModeModel;
 
 abstract class AbstractModeModelSetter implements EventHandler {
 

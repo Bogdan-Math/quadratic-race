@@ -1,6 +1,6 @@
 package race.frame;
 
-import race.model.ModeModel;
+import race.mvc.model.mode.ModeModel;
 import race.panel.PRoad;
 
 public class Road extends BaseFrame {

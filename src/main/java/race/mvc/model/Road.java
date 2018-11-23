@@ -1,4 +1,4 @@
-package race.model;
+package race.mvc.model;
 
 public class Road {
 

@@ -1,15 +1,15 @@
-package race.event;
+package race.bus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SimpleEventManager implements EventPublisher {
+public class EventBus implements EventPublisher {
 
     private Map<String, List<EventHandler>> eventMap;
 
-    public SimpleEventManager(List<String> events) {
+    public EventBus(List<String> events) {
         eventMap = new HashMap<>();
         events.forEach(event -> eventMap.put(event, new ArrayList<>()));
     }

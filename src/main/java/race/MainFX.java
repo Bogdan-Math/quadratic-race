@@ -2,17 +2,16 @@ package race;
 
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import race.controller.mode.EasyModeModelSetter;
-import race.controller.mode.HardModeModelSetter;
-import race.controller.mode.NormalModeModelSetter;
-import race.event.EventPublisher;
-import race.event.SimpleEventManager;
-import race.model.ModeModel;
-import race.view.mode.ModeView;
-import race.view.mode.ModeViewEvent;
+import race.bus.EventBus;
+import race.bus.EventPublisher;
+import race.mvc.controller.mode.ModeController;
+import race.mvc.model.mode.ModeModelEvent;
+import race.mvc.view.mode.ModeViewEvent;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static race.multimedia.image.ImageResource.image;
 
@@ -29,15 +28,16 @@ public class MainFX extends Application {
     public void start(Stage stage) {
         fillHeaderFor(stage);
 
-        ModeModel modeModel = new ModeModel();
+        List<String> events = Arrays.asList(
+                ModeViewEvent.CLICK_EASY_MODE_BUTTON.name(),
+                ModeViewEvent.CLICK_NORMAL_MODE_BUTTON.name(),
+                ModeViewEvent.CLICK_HARD_MODE_BUTTON.name(),
+                ModeModelEvent.MODE_INITIALIZED.name()
+        );
 
-        EventPublisher eventPublisher = new SimpleEventManager(ModeViewEvent.asStringList());
-        eventPublisher.subscribe(ModeViewEvent.CLICK_EASY_MODE_BUTTON.name(), new EasyModeModelSetter(modeModel));
-        eventPublisher.subscribe(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON.name(), new NormalModeModelSetter(modeModel));
-        eventPublisher.subscribe(ModeViewEvent.CLICK_HARD_MODE_BUTTON.name(), new HardModeModelSetter(modeModel));
+        EventPublisher eventPublisher = new EventBus(events);
 
-        ModeView modeView = new ModeView(eventPublisher);
-        stage.setScene(new Scene(modeView));
+        stage.setScene(new ModeController(eventPublisher).getScene());
         stage.show();
 
         stage.setResizable(false);

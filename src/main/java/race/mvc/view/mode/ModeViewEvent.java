@@ -1,4 +1,4 @@
-package race.view.mode;
+package race.mvc.view.mode;
 
 import java.util.List;
 

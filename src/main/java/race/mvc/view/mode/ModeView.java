@@ -1,11 +1,11 @@
-package race.view.mode;
+package race.mvc.view.mode;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import race.event.EventPublisher;
+import race.bus.EventPublisher;
 
 import static race.multimedia.image.ImageResource.image;
 

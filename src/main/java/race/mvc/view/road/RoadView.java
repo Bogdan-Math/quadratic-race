@@ -1,9 +1,8 @@
-package race.view.road;
+package race.mvc.view.road;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import race.model.Road;
 
 import java.util.LinkedList;
 

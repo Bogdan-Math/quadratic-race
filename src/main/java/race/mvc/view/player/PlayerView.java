@@ -1,4 +1,4 @@
-package race.view.player;
+package race.mvc.view.player;
 
 import javax.swing.*;
 import java.awt.*;

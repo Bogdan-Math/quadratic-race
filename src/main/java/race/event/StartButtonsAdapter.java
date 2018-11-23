@@ -1,7 +1,7 @@
 package race.event;
 
 import race.frame.Road;
-import race.model.ModeModel;
+import race.mvc.model.mode.ModeModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

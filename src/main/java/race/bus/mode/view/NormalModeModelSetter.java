@@ -1,6 +1,6 @@
-package race.controller.mode;
+package race.bus.mode.view;
 
-import race.model.ModeModel;
+import race.mvc.model.mode.ModeModel;
 
 public class NormalModeModelSetter extends AbstractModeModelSetter {
 

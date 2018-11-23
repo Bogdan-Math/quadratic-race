@@ -1,15 +1,16 @@
-package race.controller;
+package race.mvc.controller;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import race.model.ModeModel;
-import race.model.Player;
-import race.model.Road;
-import race.view.mode.ModeView;
-import race.view.player.PlayerView;
-import race.view.road.RoadView;
+import race.bus.EventBus;
+import race.mvc.model.mode.ModeModel;
+import race.mvc.model.Player;
+import race.mvc.model.Road;
+import race.mvc.view.mode.ModeView;
+import race.mvc.view.player.PlayerView;
+import race.mvc.view.road.RoadView;
 
 public class GameController {
 
@@ -23,7 +24,7 @@ public class GameController {
     private PlayerView playerView;
 
     public GameController() {
-        this.modeModel = new ModeModel();
+        this.modeModel = new ModeModel(new EventBus(null));
 
         this.road = new Road();
         this.roadView = new RoadView();
