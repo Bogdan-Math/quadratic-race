@@ -53,8 +53,4 @@ public class ModeView extends HBox {
         modeButton .setGraphic(new ImageView(image));
         return modeButton;
     }
-
-    public EventPublisher getEventPublisher() {
-        return eventPublisher;
-    }
 }

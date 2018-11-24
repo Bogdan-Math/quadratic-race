@@ -1,20 +1,17 @@
 package race.bus.view.road;
 
-import race.bus.EventHandler;
 import race.mvc.model.road.RoadModel;
 
-public class RoadModelVelocityReducer implements EventHandler {
+public class RoadModelVelocityReducer extends AbstractRoadModelVelocityChanger {
 
-    private static final double dV = -0.9;
-
-    private RoadModel roadModel;
+    private static final double REDUCE_dV = -0.9;
 
     public RoadModelVelocityReducer(RoadModel roadModel) {
-        this.roadModel = roadModel;
+        super(roadModel);
     }
 
     @Override
-    public void handle(String event) {
-        roadModel.changeV(dV);
+    double dV() {
+        return REDUCE_dV;
     }
 }

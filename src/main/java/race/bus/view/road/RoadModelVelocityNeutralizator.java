@@ -1,20 +1,17 @@
 package race.bus.view.road;
 
-import race.bus.EventHandler;
 import race.mvc.model.road.RoadModel;
 
-public class RoadModelVelocityNeutralizator implements EventHandler {
+public class RoadModelVelocityNeutralizator extends AbstractRoadModelVelocityChanger {
 
-    private static final double dV = -0.3;
-
-    private RoadModel roadModel;
+    private static final double NEUTRAL_dV = -0.3;
 
     public RoadModelVelocityNeutralizator(RoadModel roadModel) {
-        this.roadModel = roadModel;
+        super(roadModel);
     }
 
     @Override
-    public void handle(String event) {
-        roadModel.changeV(dV);
+    double dV() {
+        return NEUTRAL_dV;
     }
 }
