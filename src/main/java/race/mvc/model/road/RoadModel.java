@@ -1,9 +1,9 @@
-package race.mvc.model;
+package race.mvc.model.road;
 
-public class Player {
+public class RoadModel {
 
     private static final int MIN_VELOCITY = 0;
-    private static final int MAX_VELOCITY = 10;
+    private static final int MAX_VELOCITY = 25;
 
     private double v = 0;
     private double dv = 0;
@@ -21,4 +21,5 @@ public class Player {
     public double getVelocity() {
         return v;
     }
+
 }

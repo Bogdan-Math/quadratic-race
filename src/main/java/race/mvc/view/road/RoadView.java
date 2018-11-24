@@ -22,9 +22,11 @@ public class RoadView extends Pane {
         setMaxHeight(ROAD_IMAGE.getHeight());
 
         var topImageView = new ImageView(ROAD_IMAGE);
-        var mainImageView = new ImageView(ROAD_IMAGE);
-        var bottomImageView = new ImageView(ROAD_IMAGE);
         topImageView.setTranslateY(-ROAD_IMAGE.getHeight());
+
+        var mainImageView = new ImageView(ROAD_IMAGE);
+
+        var bottomImageView = new ImageView(ROAD_IMAGE);
         bottomImageView.setTranslateY(ROAD_IMAGE.getHeight());
 
         roadPieces.add(bottomImageView);
