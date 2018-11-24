@@ -38,12 +38,13 @@ public class RoadView extends Pane {
         getChildren().add(topImageView);
     }
 
-    public LinkedList<ImageView> getRoadPieces() {
-        return roadPieces;
+    public void move(double dv) {
+        swapPiecesIfNeed();
+        roadPieces.forEach(imageView -> move(imageView, dv));
+
     }
 
-    public void move() {
-        var roadPieces = getRoadPieces();
+    private void swapPiecesIfNeed() {
         var first = roadPieces.getFirst();
         var last = roadPieces.getLast();
         if (first.getTranslateY() >= ROAD_IMAGE.getHeight()) {
@@ -53,4 +54,9 @@ public class RoadView extends Pane {
             swap(roadPieces, firstElementIndex, lastElementIndex);
         }
     }
+
+    private void move(ImageView imageView, double v) {
+        imageView.setTranslateY(imageView.getTranslateY() + v);
+    }
+
 }

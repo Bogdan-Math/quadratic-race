@@ -7,7 +7,9 @@ import race.bus.EventPublisher;
 import race.mvc.controller.mode.ModeController;
 import race.mvc.controller.road.RoadController;
 import race.mvc.model.mode.ModeModelEvent;
+import race.mvc.model.road.RoadModelEvent;
 import race.mvc.view.mode.ModeViewEvent;
+import race.mvc.view.road.RoadViewEvent;
 
 import java.util.List;
 
@@ -27,7 +29,6 @@ public class MainFX extends Application {
     public void start(Stage stage) {
         fillHeaderFor(stage);
 
-
         List<String> events = asList(
 
                 ModeViewEvent.SHOW.name(),
@@ -35,7 +36,14 @@ public class MainFX extends Application {
                 ModeViewEvent.CLICK_NORMAL_MODE_BUTTON.name(),
                 ModeViewEvent.CLICK_HARD_MODE_BUTTON.name(),
 
-                ModeModelEvent.MODE_INITIALIZED.name()
+                ModeModelEvent.MODE_INITIALIZED.name(),
+
+                RoadViewEvent.MOVE_UP_PRESSED.name(),
+                RoadViewEvent.MOVE_UP_RELEASED.name(),
+                RoadViewEvent.MOVE_DOWN_PRESSED.name(),
+                RoadViewEvent.MOVE_DOWN_RELEASED.name(),
+
+                RoadModelEvent.CHANGE_V.name()
         );
 
         EventPublisher eventPublisher = new EventBus(events);

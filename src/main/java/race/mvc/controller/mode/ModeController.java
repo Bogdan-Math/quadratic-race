@@ -15,12 +15,9 @@ import race.mvc.view.mode.ModeViewEvent;
 
 public class ModeController {
 
-    private ModeModel modeModel;
-    private ModeView modeView;
-
     public ModeController(EventPublisher eventPublisher, Stage stage) {
-        modeModel = new ModeModel(eventPublisher);
-        modeView = new ModeView(eventPublisher);
+        var modeModel   = new ModeModel(eventPublisher);
+        var modeView    = new ModeView(eventPublisher);
 
         //subscribe on mode view events
         eventPublisher.subscribe(ModeViewEvent.SHOW.name(), new SceneSetter(stage, new Scene(modeView)));
@@ -30,10 +27,5 @@ public class ModeController {
 
         //subscribe on mode model events
         eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED.name(), new ModeModelHandler(modeModel));
-
-    }
-
-    public Scene getScene() {
-        return new Scene(modeView);
     }
 }

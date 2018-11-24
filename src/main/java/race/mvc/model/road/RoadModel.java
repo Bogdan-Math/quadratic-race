@@ -1,24 +1,29 @@
 package race.mvc.model.road;
 
+import race.bus.EventPublisher;
+
 public class RoadModel {
 
-    private static final int MIN_VELOCITY = 0;
-    private static final int MAX_VELOCITY = 25;
+    private static final int MIN_V = 0;
+    private static final int MAX_V = 25;
 
     private double v = 0;
-    private double dv = 0;
 
-    public void move() {
+    private EventPublisher eventPublisher;
+
+    public RoadModel(EventPublisher eventPublisher) {
+        this.eventPublisher = eventPublisher;
+    }
+
+    public void changeV(double dv) {
         v += dv;
-        if (v <= MIN_VELOCITY) v = MIN_VELOCITY;
-        if (v >= MAX_VELOCITY) v = MAX_VELOCITY;
+        if (v <= MIN_V) v = MIN_V;
+        if (v >= MAX_V) v = MAX_V;
+
+        eventPublisher.publish(RoadModelEvent.CHANGE_V.name());
     }
 
-    public void changeVelocity(double dv) {
-        this.dv = dv;
-    }
-
-    public double getVelocity() {
+    public double getV() {
         return v;
     }
 
