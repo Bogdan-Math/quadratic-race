@@ -4,11 +4,12 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import race.bus.EventBus;
 import race.bus.EventPublisher;
+import race.mvc.controller.GameController;
 import race.mvc.controller.mode.ModeController;
-import race.mvc.controller.road.RoadController;
 import race.mvc.model.mode.ModeModelEvent;
 import race.mvc.model.road.RoadModelEvent;
 import race.mvc.view.mode.ModeViewEvent;
+import race.mvc.view.player.PlayerViewEvent;
 import race.mvc.view.road.RoadViewEvent;
 
 import java.util.List;
@@ -43,13 +44,18 @@ public class MainFX extends Application {
                 RoadViewEvent.MOVE_DOWN_PRESSED.name(),
                 RoadViewEvent.MOVE_DOWN_RELEASED.name(),
 
-                RoadModelEvent.CHANGE_V.name()
+                RoadModelEvent.CHANGE_V.name(),
+
+                PlayerViewEvent.MOVE_LEFT_PRESSED.name(),
+                PlayerViewEvent.MOVE_LEFT_RELEASED.name(),
+                PlayerViewEvent.MOVE_RIGHT_PRESSED.name(),
+                PlayerViewEvent.MOVE_RIGHT_RELEASED.name()
         );
 
         EventPublisher eventPublisher = new EventBus(events);
 
         new ModeController(eventPublisher, stage);
-        new RoadController(eventPublisher, stage);
+        new GameController(eventPublisher, stage);
 
         eventPublisher.publish(ModeViewEvent.SHOW.name());
     }
