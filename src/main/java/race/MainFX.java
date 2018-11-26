@@ -4,13 +4,14 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import race.bus.EventBus;
 import race.bus.EventPublisher;
-import race.mvc.controller.GameController;
+import race.bus.view.SceneSetter;
 import race.mvc.controller.mode.ModeController;
+import race.mvc.controller.race.RaceController;
 import race.mvc.model.mode.ModeModelEvent;
-import race.mvc.model.road.RoadModelEvent;
+import race.mvc.model.race.road.RoadModelEvent;
 import race.mvc.view.mode.ModeViewEvent;
-import race.mvc.view.player.PlayerViewEvent;
-import race.mvc.view.road.RoadViewEvent;
+import race.mvc.view.race.player.PlayerViewEvent;
+import race.mvc.view.race.road.RoadViewEvent;
 
 import java.util.List;
 
@@ -54,10 +55,13 @@ public class MainFX extends Application {
 
         EventPublisher eventPublisher = new EventBus(events);
 
-        new ModeController(eventPublisher, stage);
-        new GameController(eventPublisher, stage);
+        ModeController modeController = new ModeController(eventPublisher);
+        RaceController raceController = new RaceController(eventPublisher);
 
+        eventPublisher.subscribe(ModeViewEvent.SHOW.name(), new SceneSetter(stage, modeController.initializeScene()));
         eventPublisher.publish(ModeViewEvent.SHOW.name());
+
+        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED.name(), new SceneSetter(stage, raceController.initializeScene()));
     }
 
     private void fillHeaderFor(Stage stage) {

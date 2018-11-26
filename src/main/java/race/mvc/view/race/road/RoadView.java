@@ -1,29 +1,21 @@
-package race.mvc.view.road;
+package race.mvc.view.race.road;
 
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import race.bus.EventPublisher;
-import race.mvc.view.KeyEventsInitializer;
 
 import java.util.LinkedList;
 
 import static java.util.Collections.swap;
 import static race.multimedia.image.ImageResource.image;
 
-public class RoadView extends Pane implements KeyEventsInitializer {
+public class RoadView extends Pane {
 
     private static final Image ROAD_IMAGE = image("race/multimedia/image/road.png");
 
     private LinkedList<ImageView> imageViews;
 
-    private EventPublisher eventPublisher;
-
-    public RoadView(EventPublisher eventPublisher) {
-        this.eventPublisher = eventPublisher;
+    public RoadView() {
         this.imageViews = new LinkedList<>();
 
         setMaxWidth(ROAD_IMAGE.getWidth());
@@ -46,25 +38,10 @@ public class RoadView extends Pane implements KeyEventsInitializer {
         getChildren().add(topImageView);
     }
 
-    @Override
-    public void initializeKeyEvents() {
-        Scene scene = getScene();
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, keyEvent -> {
-            KeyCode keyCode = keyEvent.getCode();
-            if (keyCode.equals(KeyCode.W))
-                eventPublisher.publish(RoadViewEvent.MOVE_UP_PRESSED.name());
-            if (keyCode.equals(KeyCode.S))
-                eventPublisher.publish(RoadViewEvent.MOVE_DOWN_PRESSED.name());
-        });
-
-        scene.addEventHandler(KeyEvent.KEY_RELEASED, keyEvent -> {
-            KeyCode keyCode = keyEvent.getCode();
-            if (keyCode.equals(KeyCode.W))
-                eventPublisher.publish(RoadViewEvent.MOVE_UP_RELEASED.name());
-            if (keyCode.equals(KeyCode.S))
-                eventPublisher.publish(RoadViewEvent.MOVE_DOWN_RELEASED.name());
-        });
-    }
+//    @Override
+//    public void initializeKeyEvents() {
+//        Scene scene = initializeScene();
+//    }
 
     public void move(double dv) {
         swapPiecesIfNeed();

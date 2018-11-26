@@ -1,6 +1,7 @@
 package race.mvc.view.mode;
 
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,20 +23,14 @@ public class ModeView extends HBox {
     private static final int PADDING = 20;
     private static final int SPACING = PADDING / 2;
 
-    private EventPublisher eventPublisher;
     private Button easyModeButton;
     private Button normalModeButton;
     private Button hardModeButton;
 
-    public ModeView(EventPublisher eventPublisher) {
-        this.eventPublisher = eventPublisher;
+    public ModeView() {
         this.easyModeButton = newModeButton(EASY_BUTTON_IMAGE, EASY);
         this.normalModeButton = newModeButton(NORMAL_BUTTON_IMAGE, NORMAL);
         this.hardModeButton = newModeButton(HARD_BUTTON_IMAGE, HARD);
-
-        easyModeButton.setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_EASY_MODE_BUTTON.name()));
-        normalModeButton.setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON.name()));
-        hardModeButton.setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_HARD_MODE_BUTTON.name()));
 
         getChildren().addAll(
                 easyModeButton,
@@ -50,7 +45,19 @@ public class ModeView extends HBox {
     private Button newModeButton(Image image, String text) {
         var modeButton = new Button();
         modeButton.setText(text);
-        modeButton .setGraphic(new ImageView(image));
+        modeButton.setGraphic(new ImageView(image));
         return modeButton;
+    }
+
+    public Button getEasyModeButton() {
+        return easyModeButton;
+    }
+
+    public Button getNormalModeButton() {
+        return normalModeButton;
+    }
+
+    public Button getHardModeButton() {
+        return hardModeButton;
     }
 }

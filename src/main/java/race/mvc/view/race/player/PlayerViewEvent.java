@@ -1,4 +1,4 @@
-package race.mvc.view.player;
+package race.mvc.view.race.player;
 
 public enum PlayerViewEvent {
 

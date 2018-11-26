@@ -1,4 +1,4 @@
-package race.mvc.view.road;
+package race.mvc.view.race.road;
 
 public enum RoadViewEvent {
 

@@ -1,4 +1,4 @@
-package race.mvc.model.road;
+package race.mvc.model.race.road;
 
 import race.bus.EventPublisher;
 

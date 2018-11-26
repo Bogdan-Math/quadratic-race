@@ -3,11 +3,11 @@ package race.bus.model.mode;
 import race.bus.EventHandler;
 import race.mvc.model.mode.ModeModel;
 
-public class ModeModelHandler implements EventHandler {
+public class RaceViewCreator implements EventHandler {
 
     private ModeModel modeModel;
 
-    public ModeModelHandler(ModeModel modeModel) {
+    public RaceViewCreator(ModeModel modeModel) {
         this.modeModel = modeModel;
     }
 

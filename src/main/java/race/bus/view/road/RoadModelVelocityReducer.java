@@ -1,6 +1,6 @@
 package race.bus.view.road;
 
-import race.mvc.model.road.RoadModel;
+import race.mvc.model.race.road.RoadModel;
 
 public class RoadModelVelocityReducer extends AbstractRoadModelVelocityChanger {
 

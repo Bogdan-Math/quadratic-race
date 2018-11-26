@@ -1,7 +1,7 @@
 package race.bus.view.road;
 
 import race.bus.EventHandler;
-import race.mvc.model.road.RoadModel;
+import race.mvc.model.race.road.RoadModel;
 
 abstract class AbstractRoadModelVelocityChanger implements EventHandler {
 

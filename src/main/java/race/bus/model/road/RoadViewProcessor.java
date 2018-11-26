@@ -2,8 +2,8 @@ package race.bus.model.road;
 
 import javafx.animation.AnimationTimer;
 import race.bus.EventHandler;
-import race.mvc.model.road.RoadModel;
-import race.mvc.view.road.RoadView;
+import race.mvc.model.race.road.RoadModel;
+import race.mvc.view.race.road.RoadView;
 
 import static java.util.Objects.isNull;
 
