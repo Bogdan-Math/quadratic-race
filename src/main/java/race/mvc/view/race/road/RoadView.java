@@ -38,11 +38,6 @@ public class RoadView extends Pane {
         getChildren().add(topImageView);
     }
 
-//    @Override
-//    public void initializeKeyEvents() {
-//        Scene scene = initializeScene();
-//    }
-
     public void move(double dv) {
         swapPiecesIfNeed();
         imageViews.forEach(imageView -> imageView.setTranslateY(imageView.getTranslateY() + dv));

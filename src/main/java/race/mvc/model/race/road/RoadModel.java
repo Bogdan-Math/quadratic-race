@@ -4,10 +4,8 @@ import race.bus.EventPublisher;
 
 public class RoadModel {
 
-    private static final int MIN_V = 0;
-    private static final int MAX_V = 25;
-
-    private double v = 0;
+    private double dS;
+    private boolean move;
 
     private EventPublisher eventPublisher;
 
@@ -15,16 +13,21 @@ public class RoadModel {
         this.eventPublisher = eventPublisher;
     }
 
-    public void changeV(double dv) {
-        v += dv;
-        if (v <= MIN_V) v = MIN_V;
-        if (v >= MAX_V) v = MAX_V;
+    public void dS(double dS) {
+        this.dS = dS;
 
         eventPublisher.publish(RoadModelEvent.CHANGE_V.name());
     }
 
-    public double getV() {
-        return v;
+    public double dS() {
+        return dS;
     }
 
+    public boolean move() {
+        return move;
+    }
+
+    public void move(boolean move) {
+        this.move = move;
+    }
 }

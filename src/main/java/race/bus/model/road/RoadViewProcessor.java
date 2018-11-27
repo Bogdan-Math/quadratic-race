@@ -25,7 +25,9 @@ public class RoadViewProcessor implements EventHandler {
 
                 @Override
                 public void handle(long now) {
-                    roadView.move(roadModel.getV());
+//                    if (roadModel.dS()) {
+//                        roadView.dS(roadModel.getS());
+//                    }
                 }
             };
             animationTimer.start();

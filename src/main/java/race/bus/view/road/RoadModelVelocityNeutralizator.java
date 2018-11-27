@@ -4,7 +4,7 @@ import race.mvc.model.race.road.RoadModel;
 
 public class RoadModelVelocityNeutralizator extends AbstractRoadModelVelocityChanger {
 
-    private static final double NEUTRAL_dV = -0.3;
+    private static final double NEUTRAL_dV = -5;
 
     public RoadModelVelocityNeutralizator(RoadModel roadModel) {
         super(roadModel);

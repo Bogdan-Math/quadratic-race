@@ -4,7 +4,7 @@ import race.mvc.model.race.road.RoadModel;
 
 public class RoadModelVelocityBooster extends AbstractRoadModelVelocityChanger {
 
-    private static final double BOOST_dV = 0.6;
+    private static final double BOOST_dV = 10;
 
     public RoadModelVelocityBooster(RoadModel roadModel) {
         super(roadModel);

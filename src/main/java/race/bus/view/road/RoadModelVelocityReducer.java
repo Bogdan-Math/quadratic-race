@@ -4,7 +4,7 @@ import race.mvc.model.race.road.RoadModel;
 
 public class RoadModelVelocityReducer extends AbstractRoadModelVelocityChanger {
 
-    private static final double REDUCE_dV = -0.9;
+    private static final double REDUCE_dV = -15;
 
     public RoadModelVelocityReducer(RoadModel roadModel) {
         super(roadModel);

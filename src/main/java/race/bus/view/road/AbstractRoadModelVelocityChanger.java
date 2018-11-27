@@ -13,7 +13,7 @@ abstract class AbstractRoadModelVelocityChanger implements EventHandler {
 
     @Override
     public void handle(String event) {
-        roadModel.changeV(dV());
+        roadModel.dS(dV());
     }
 
     abstract double dV();
