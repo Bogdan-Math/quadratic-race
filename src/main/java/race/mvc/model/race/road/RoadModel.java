@@ -5,6 +5,7 @@ import race.bus.EventPublisher;
 public class RoadModel {
 
     private double dS;
+
     private boolean move;
 
     private EventPublisher eventPublisher;
@@ -13,8 +14,13 @@ public class RoadModel {
         this.eventPublisher = eventPublisher;
     }
 
-    public void dS(double dS) {
-        this.dS = dS;
+    public void d2S(double d2S) {
+        int MAX_dS = 25;
+        int MIN_dS = 0;
+        double dS = this.dS + d2S;
+        if (dS > MAX_dS) this.dS = MAX_dS;
+        if (dS < MIN_dS) this.dS = MIN_dS;
+        if (dS <= MAX_dS && dS >= MIN_dS) this.dS = dS;
 
         eventPublisher.publish(RoadModelEvent.CHANGE_V.name());
     }
@@ -23,11 +29,15 @@ public class RoadModel {
         return dS;
     }
 
-    public boolean move() {
+    public boolean speedIccreased() {
         return move;
     }
 
-    public void move(boolean move) {
-        this.move = move;
+    public boolean speedDecreased() {
+        return !move;
+    }
+
+    public void move(boolean moved) {
+        move = moved;
     }
 }

@@ -15,8 +15,6 @@ public class RaceController {
     private RaceView raceView;
     private RaceModel raceModel;
     private EventPublisher eventPublisher;
-    private boolean UP;
-    private boolean DOWN;
 
     public RaceController(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
@@ -43,10 +41,13 @@ public class RaceController {
 
             @Override
             public void handle(long now) {
-                if (roadModel.move()) {
-                    roadModel.dS(10);
-                    roadView.move(roadModel.dS());
+                if (roadModel.speedIccreased()) {
+                    roadModel.d2S(0.3);
                 }
+                if (roadModel.speedDecreased()) {
+                    roadModel.d2S(-0.2);
+                }
+                roadView.move(roadModel.dS());
             }
         }.start();
 
@@ -55,30 +56,20 @@ public class RaceController {
             KeyCode keyCode = keyEvent.getCode();
 
             if (keyCode.equals(KeyCode.W)) {
-//                roadModel.dS(true);
-//                roadModel.dS(5);
+                roadModel.d2S(0.3);
                 roadModel.move(true);
-//                this.UP = true;
-//                roadModel.dS(true);
-//                eventPublisher.publish(RoadViewEvent.MOVE_UP_PRESSED.name());
             }
-//            if (keyCode.equals(KeyCode.S)) {
-//                roadModel.dS(false);
-//                roadModel.dS(0);
-//                eventPublisher.publish(RoadViewEvent.MOVE_DOWN_PRESSED.name());
-//            }
+            if (keyCode.equals(KeyCode.S)) {
+            }
         });
 
         scene.addEventHandler(KeyEvent.KEY_RELEASED, keyEvent -> {
             KeyCode keyCode = keyEvent.getCode();
             if (keyCode.equals(KeyCode.W)) {
-//                roadModel.dS(false);
                 roadModel.move(false);
-//                eventPublisher.publish(RoadViewEvent.MOVE_UP_RELEASED.name());
             }
-//            if (keyCode.equals(KeyCode.S)) {
-//                eventPublisher.publish(RoadViewEvent.MOVE_DOWN_RELEASED.name());
-//            }
+            if (keyCode.equals(KeyCode.S)) {
+            }
         });
 
         return scene;
