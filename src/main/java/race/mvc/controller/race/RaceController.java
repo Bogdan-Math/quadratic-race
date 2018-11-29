@@ -23,12 +23,6 @@ public class RaceController {
 
         RoadModel roadModel = raceModel.getRoadModel();
         RoadView roadView = raceView.getRoadView();
-
-//        eventPublisher.subscribe(RoadViewEvent.MOVE_UP_PRESSED.name(), new RoadModelVelocityBooster(roadModel));
-//        eventPublisher.subscribe(RoadViewEvent.MOVE_DOWN_PRESSED.name(), new RoadModelVelocityReducer(roadModel));
-//        eventPublisher.subscribe(RoadViewEvent.MOVE_UP_RELEASED.name(), new RoadModelVelocityNeutralizator(roadModel));
-//        eventPublisher.subscribe(RoadViewEvent.MOVE_DOWN_RELEASED.name(), new RoadModelVelocityNeutralizator(roadModel));
-//        eventPublisher.subscribe(RoadModelEvent.CHANGE_V.name(), new RoadViewProcessor(roadView, roadModel));
     }
 
     public Scene initializeScene() {
