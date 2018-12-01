@@ -50,7 +50,7 @@ public class RaceController {
             KeyCode keyCode = keyEvent.getCode();
 
             if (keyCode.equals(KeyCode.W)) {
-                roadModel.d2S(0.3);
+               // roadModel.d2S(0.3);
                 roadModel.move(true);
             }
             if (keyCode.equals(KeyCode.S)) {
