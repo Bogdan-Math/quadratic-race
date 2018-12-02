@@ -36,7 +36,7 @@ public class RaceController {
             @Override
             public void handle(long now) {
                 if (roadModel.speedIccreased()) {
-                    roadModel.d2S(0.4);
+                    roadModel.d2S(0.3);
                 }
                 if (roadModel.speedDecreased()) {
                     roadModel.d2S(-0.3);
