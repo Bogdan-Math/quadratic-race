@@ -6,7 +6,7 @@ public class RoadModel {
 
     private double dS;
 
-    private boolean move;
+    private boolean speedIncreased;
 
     private EventPublisher eventPublisher;
 
@@ -29,15 +29,11 @@ public class RoadModel {
         return dS;
     }
 
-    public boolean speedIccreased() {
-        return move;
+    public boolean speedIncreased() {
+        return speedIncreased;
     }
 
-    public boolean speedDecreased() {
-        return !move;
-    }
-
-    public void move(boolean moved) {
-        move = moved;
+    public void increaseSpeed(boolean speedIncreased) {
+        this.speedIncreased = speedIncreased;
     }
 }
