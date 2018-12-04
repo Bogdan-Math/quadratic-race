@@ -21,10 +21,7 @@ public class RaceController {
     public RaceController(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
         raceView = new RaceView();
-        raceModel = new RaceModel(eventPublisher);
-
-        RoadModel roadModel = raceModel.getRoadModel();
-        RoadView roadView = raceView.getRoadView();
+        raceModel = new RaceModel();
     }
 
     public Scene initializeScene() {

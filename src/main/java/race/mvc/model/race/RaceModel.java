@@ -9,8 +9,8 @@ public class RaceModel {
     private RoadModel roadModel;
     private PlayerModel playerModel;
 
-    public RaceModel(EventPublisher eventPublisher) {
-        roadModel = new RoadModel(eventPublisher);
+    public RaceModel() {
+        roadModel = new RoadModel();
         playerModel = new PlayerModel();
     }
 
