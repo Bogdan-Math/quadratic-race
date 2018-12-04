@@ -6,13 +6,21 @@ import race.mvc.view.race.road.RoadView;
 
 public class RaceView extends Pane {
 
-    private final RoadView roadView;
-    private final PlayerView playerView;
+    private RoadView roadView;
+    private PlayerView playerView;
 
     public RaceView() {
         roadView = new RoadView();
         playerView = new PlayerView();
+
+        initializePlayerViewPosition();
+
         getChildren().addAll(roadView, playerView);
+    }
+
+    private void initializePlayerViewPosition() {
+        playerView.setTranslateX(roadView.getMaxWidth() / 2 - playerView.getMaxWidth() / 2);
+        playerView.setTranslateY(roadView.getMaxHeight()  *  3 / 4);
     }
 
     public RoadView getRoadView() {
