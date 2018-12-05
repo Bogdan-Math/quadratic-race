@@ -16,6 +16,11 @@ public class RaceController {
 
     private RaceView raceView;
     private RaceModel raceModel;
+
+    private boolean moveForward;
+    private boolean moveLeft;
+    private boolean moveRight;
+
     private EventPublisher eventPublisher;
 
     public RaceController(EventPublisher eventPublisher) {
@@ -38,20 +43,20 @@ public class RaceController {
             @Override
             public void handle(long now) {
 
-                if (roadModel.speedIncreased()) {
+                if (moveForward) {
                     roadModel.d2S(0.3);
                 }
-                if (!roadModel.speedIncreased()) {
+                if (!moveForward) {
                     roadModel.d2S(-0.3);
                 }
                 roadView.move(roadModel.dS());
 
 
-                if (playerModel.moveLeft() || playerModel.moveRight()) {
-                    if (playerModel.moveLeft()) {
+                if (moveLeft || moveRight) {
+                    if (moveLeft) {
                         playerModel.dx(-7);
                     }
-                    if (playerModel.moveRight()) {
+                    if (moveRight) {
                         playerModel.dx(7);
                     }
                 } else {
@@ -66,31 +71,37 @@ public class RaceController {
             KeyCode keyCode = keyEvent.getCode();
 
             if (keyCode.equals(KeyCode.W)) {
-                roadModel.increaseSpeed(true);
+                moveForward = true;
+//                roadModel.increaseSpeed(true);
             }
             if (keyCode.equals(KeyCode.S)) {
 
             }
             if (keyCode.equals(KeyCode.A)) {
-                playerModel.moveLeft(true);
+                moveLeft = true;
+//                playerModel.moveLeft(true);
             }
             if (keyCode.equals(KeyCode.D)) {
-                playerModel.moveRight(true);
+                moveRight = true;
+//                playerModel.moveRight(true);
             }
         });
 
         scene.addEventHandler(KeyEvent.KEY_RELEASED, keyEvent -> {
             KeyCode keyCode = keyEvent.getCode();
             if (keyCode.equals(KeyCode.W)) {
-                roadModel.increaseSpeed(false);
+                moveForward = false;
+//                roadModel.increaseSpeed(false);
             }
             if (keyCode.equals(KeyCode.S)) {
             }
             if (keyCode.equals(KeyCode.A)) {
-                playerModel.moveLeft(false);
+                moveLeft = false;
+//                playerModel.moveLeft(false);
             }
             if (keyCode.equals(KeyCode.D)) {
-                playerModel.moveRight(false);
+                moveRight = false;
+//                playerModel.moveRight(false);
             }
         });
 
