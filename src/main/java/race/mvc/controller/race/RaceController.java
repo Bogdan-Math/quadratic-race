@@ -18,6 +18,7 @@ public class RaceController {
     private RaceModel raceModel;
 
     private boolean moveForward;
+    private boolean moveBack;
     private boolean moveLeft;
     private boolean moveRight;
 
@@ -49,6 +50,9 @@ public class RaceController {
                 if (!moveForward) {
                     roadModel.d2S(-0.3);
                 }
+                if (moveBack) {
+                    roadModel.d2S(-0.5);
+                }
                 roadView.move(roadModel.dS());
 
 
@@ -72,18 +76,17 @@ public class RaceController {
 
             if (keyCode.equals(KeyCode.W)) {
                 moveForward = true;
-//                roadModel.increaseSpeed(true);
             }
             if (keyCode.equals(KeyCode.S)) {
-
+                moveBack = true;
             }
             if (keyCode.equals(KeyCode.A)) {
                 moveLeft = true;
-//                playerModel.moveLeft(true);
+                moveRight = false;
             }
             if (keyCode.equals(KeyCode.D)) {
                 moveRight = true;
-//                playerModel.moveRight(true);
+                moveLeft = false;
             }
         });
 
@@ -91,17 +94,15 @@ public class RaceController {
             KeyCode keyCode = keyEvent.getCode();
             if (keyCode.equals(KeyCode.W)) {
                 moveForward = false;
-//                roadModel.increaseSpeed(false);
             }
             if (keyCode.equals(KeyCode.S)) {
+                moveBack = false;
             }
             if (keyCode.equals(KeyCode.A)) {
                 moveLeft = false;
-//                playerModel.moveLeft(false);
             }
             if (keyCode.equals(KeyCode.D)) {
                 moveRight = false;
-//                playerModel.moveRight(false);
             }
         });
 
