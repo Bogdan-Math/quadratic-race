@@ -1,4 +1,4 @@
-package race.mvc.view.race;
+package race.mvc.view.restart;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;

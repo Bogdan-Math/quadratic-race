@@ -44,6 +44,10 @@ public class RaceController {
             @Override
             public void handle(long now) {
 
+                if (roadModel.S() >= 5000) {
+                    eventPublisher.publish("FINISH");
+                }
+
                 if (moveForward) {
                     roadModel.d2S(0.3);
                 }

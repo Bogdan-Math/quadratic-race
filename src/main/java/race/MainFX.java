@@ -7,6 +7,7 @@ import race.bus.EventPublisher;
 import race.bus.view.SceneSetter;
 import race.mvc.controller.mode.ModeController;
 import race.mvc.controller.race.RaceController;
+import race.mvc.controller.restart.RestartController;
 import race.mvc.model.mode.ModeModelEvent;
 import race.mvc.model.race.road.RoadModelEvent;
 import race.mvc.view.mode.ModeViewEvent;
@@ -50,18 +51,22 @@ public class MainFX extends Application {
                 PlayerViewEvent.MOVE_LEFT_PRESSED.name(),
                 PlayerViewEvent.MOVE_LEFT_RELEASED.name(),
                 PlayerViewEvent.MOVE_RIGHT_PRESSED.name(),
-                PlayerViewEvent.MOVE_RIGHT_RELEASED.name()
+                PlayerViewEvent.MOVE_RIGHT_RELEASED.name(),
+
+                "FINISH"
         );
 
         EventPublisher eventPublisher = new EventBus(events);
 
         ModeController modeController = new ModeController(eventPublisher);
         RaceController raceController = new RaceController(eventPublisher);
+        RestartController restartController = new RestartController(eventPublisher);
+
+        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED.name(), new SceneSetter(stage, raceController.initializeScene()));
+        eventPublisher.subscribe("FINISH", new SceneSetter(stage, restartController.initializeScene()));
 
         eventPublisher.subscribe(ModeViewEvent.SHOW.name(), new SceneSetter(stage, modeController.initializeScene()));
         eventPublisher.publish(ModeViewEvent.SHOW.name());
-
-        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED.name(), new SceneSetter(stage, raceController.initializeScene()));
     }
 
     private void fillHeaderFor(Stage stage) {

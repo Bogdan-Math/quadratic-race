@@ -1,6 +1,5 @@
 package race.mvc.model.race;
 
-import race.bus.EventPublisher;
 import race.mvc.model.race.player.PlayerModel;
 import race.mvc.model.race.road.RoadModel;
 
