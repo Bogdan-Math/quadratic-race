@@ -23,6 +23,7 @@ public class RaceController {
     private boolean moveRight;
 
     private EventPublisher eventPublisher;
+    private AnimationTimer animationTimer;
 
     public RaceController(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
@@ -39,7 +40,7 @@ public class RaceController {
 
         Scene scene = new Scene(raceView);
 
-        new AnimationTimer() {
+        animationTimer = new AnimationTimer() {
 
             @Override
             public void handle(long now) {
@@ -72,7 +73,8 @@ public class RaceController {
                 }
                 playerView.move(playerModel.dx());
             }
-        }.start();
+        };
+        animationTimer.start();
 
 
         scene.addEventHandler(KeyEvent.KEY_PRESSED, keyEvent -> {
@@ -111,5 +113,9 @@ public class RaceController {
         });
 
         return scene;
+    }
+
+    public AnimationTimer getAnimationTimer() {
+        return animationTimer;
     }
 }
