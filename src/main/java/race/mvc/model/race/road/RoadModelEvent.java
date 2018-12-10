@@ -1,5 +1,6 @@
 package race.mvc.model.race.road;
 
 public enum RoadModelEvent {
-    CHANGE_V
+    V_CHANGED,
+    ROAD_FINISHED
 }

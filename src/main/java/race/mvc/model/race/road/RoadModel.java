@@ -2,10 +2,14 @@ package race.mvc.model.race.road;
 
 public class RoadModel {
 
+    private static final double ROAD_FINISH = 5000;
+
     private double S;
     private double dS;
 
-    private boolean speedIncreased;
+    public boolean isFinished() {
+        return S > ROAD_FINISH;
+    }
 
     public void d2S(double d2S) {
         int MAX_dS = 25;
@@ -19,19 +23,7 @@ public class RoadModel {
         System.out.println(this.S);
     }
 
-    public double S() {
-        return S;
-    }
-
     public double dS() {
         return dS;
-    }
-
-    public boolean speedIncreased() {
-        return speedIncreased;
-    }
-
-    public void increaseSpeed(boolean speedIncreased) {
-        this.speedIncreased = speedIncreased;
     }
 }

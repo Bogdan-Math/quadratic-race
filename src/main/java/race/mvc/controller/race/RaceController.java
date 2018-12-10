@@ -8,6 +8,7 @@ import race.bus.EventPublisher;
 import race.mvc.model.race.RaceModel;
 import race.mvc.model.race.player.PlayerModel;
 import race.mvc.model.race.road.RoadModel;
+import race.mvc.model.race.road.RoadModelEvent;
 import race.mvc.view.race.RaceView;
 import race.mvc.view.race.player.PlayerView;
 import race.mvc.view.race.road.RoadView;
@@ -23,7 +24,6 @@ public class RaceController {
     private boolean moveRight;
 
     private EventPublisher eventPublisher;
-    private AnimationTimer animationTimer;
 
     public RaceController(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
@@ -40,13 +40,14 @@ public class RaceController {
 
         Scene scene = new Scene(raceView);
 
-        animationTimer = new AnimationTimer() {
+        AnimationTimer animationTimer = new AnimationTimer() {
 
             @Override
             public void handle(long now) {
 
-                if (roadModel.S() >= 5000) {
-                    eventPublisher.publish("FINISH");
+                if (roadModel.isFinished()) {
+                    this.stop();
+                    eventPublisher.publish(RoadModelEvent.ROAD_FINISHED.name());
                 }
 
                 if (moveForward) {
@@ -113,9 +114,5 @@ public class RaceController {
         });
 
         return scene;
-    }
-
-    public AnimationTimer getAnimationTimer() {
-        return animationTimer;
     }
 }

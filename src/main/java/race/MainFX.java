@@ -46,14 +46,14 @@ public class MainFX extends Application {
                 RoadViewEvent.MOVE_DOWN_PRESSED.name(),
                 RoadViewEvent.MOVE_DOWN_RELEASED.name(),
 
-                RoadModelEvent.CHANGE_V.name(),
+                RoadModelEvent.V_CHANGED.name(),
 
                 PlayerViewEvent.MOVE_LEFT_PRESSED.name(),
                 PlayerViewEvent.MOVE_LEFT_RELEASED.name(),
                 PlayerViewEvent.MOVE_RIGHT_PRESSED.name(),
                 PlayerViewEvent.MOVE_RIGHT_RELEASED.name(),
 
-                "FINISH"
+                RoadModelEvent.ROAD_FINISHED.name()
         );
 
         EventPublisher eventPublisher = new EventBus(events);
@@ -63,7 +63,7 @@ public class MainFX extends Application {
         RestartController restartController = new RestartController(eventPublisher);
 
         eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED.name(), new SceneSetter(stage, raceController.initializeScene()));
-        eventPublisher.subscribe("FINISH", new SceneSetter(stage, restartController.initializeScene()));
+        eventPublisher.subscribe(RoadModelEvent.ROAD_FINISHED.name(), new SceneSetter(stage, restartController.initializeScene()));
 
         eventPublisher.subscribe(ModeViewEvent.SHOW.name(), new SceneSetter(stage, modeController.initializeScene()));
         eventPublisher.publish(ModeViewEvent.SHOW.name());
