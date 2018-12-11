@@ -2,6 +2,7 @@ package race.mvc.controller.restart;
 
 import javafx.scene.Scene;
 import race.bus.EventPublisher;
+import race.mvc.view.WindowEvent;
 import race.mvc.view.mode.ModeViewEvent;
 import race.mvc.view.restart.RestartView;
 
@@ -19,7 +20,7 @@ public class RestartController {
         Scene scene = new Scene(restartView);
 
         restartView.getRestartButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.SHOW.name()));
-        restartView.getCloseButton().setOnAction(e -> System.out.println("CLOSE"));
+        restartView.getCloseButton().setOnAction(e -> eventPublisher.publish(WindowEvent.CLOSE.name()));
 
         return scene;
     }
