@@ -15,9 +15,6 @@ import race.mvc.view.race.road.RoadView;
 
 public class RaceController {
 
-    private RaceView raceView;
-    private RaceModel raceModel;
-
     private boolean moveForward;
     private boolean moveBack;
     private boolean moveLeft;
@@ -27,18 +24,25 @@ public class RaceController {
 
     public RaceController(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
-        raceView = new RaceView();
-        raceModel = new RaceModel();
     }
 
     public Scene initializeScene() {
+        RaceModel raceModel = new RaceModel();
+        RaceView raceView = new RaceView();
+
+        Scene scene = new Scene(raceView);
+
         RoadModel roadModel = raceModel.getRoadModel();
         RoadView roadView = raceView.getRoadView();
 
         PlayerModel playerModel = raceModel.getPlayerModel();
         PlayerView playerView = raceView.getPlayerView();
 
-        Scene scene = new Scene(raceView);
+
+        moveForward = false;
+        moveBack = false;
+        moveLeft = false;
+        moveRight = false;
 
         AnimationTimer animationTimer = new AnimationTimer() {
 

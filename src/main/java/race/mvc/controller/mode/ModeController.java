@@ -13,16 +13,12 @@ import race.mvc.view.mode.ModeViewEvent;
 
 public class ModeController {
 
-    private ModeModel modeModel;
-    private ModeView modeView;
-
     private EventPublisher eventPublisher;
 
     public ModeController(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
 
-        modeModel = new ModeModel(eventPublisher);
-        modeView = new ModeView();
+        ModeModel modeModel = new ModeModel(eventPublisher);
 
         //subscribe on mode view events
         eventPublisher.subscribe(ModeViewEvent.CLICK_EASY_MODE_BUTTON.name(), new EasyModeModelSetter(modeModel));
@@ -34,6 +30,7 @@ public class ModeController {
     }
 
     public Scene initializeScene() {
+        ModeView modeView = new ModeView();
         Scene scene = new Scene(modeView);
 
         modeView.getEasyModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_EASY_MODE_BUTTON.name()));
