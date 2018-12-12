@@ -2,6 +2,7 @@ package race;
 
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import race.bus.EventBus;
@@ -66,30 +67,21 @@ public class MainFX extends Application {
         RaceController raceController = new RaceController(eventPublisher);
         RestartController restartController = new RestartController(eventPublisher);
 
-        eventPublisher.subscribe(ModeViewEvent.SHOW.name(), e -> {
-            stage.setScene(modeController.initializeScene());
-            stage.setResizable(false);
-            stage.show();
-            moveToCenter(stage);
-        });
+        eventPublisher.subscribe(ModeViewEvent.SHOW.name(),
+                e -> show(stage, modeController.initializeScene())
+        );
 
-        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED.name(), e -> {
-            stage.setScene(raceController.initializeScene());
-            stage.setResizable(false);
-            stage.show();
-            moveToCenter(stage);
-        });
+        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED.name(),
+                e -> show(stage, raceController.initializeScene())
+        );
 
-        eventPublisher.subscribe(RoadModelEvent.ROAD_FINISHED.name(), e -> {
-            stage.setScene(restartController.initializeScene());
-            stage.setResizable(false);
-            stage.show();
-            moveToCenter(stage);
-        });
+        eventPublisher.subscribe(RoadModelEvent.ROAD_FINISHED.name(),
+                e -> show(stage, restartController.initializeScene())
+        );
 
-        eventPublisher.subscribe(WindowEvent.CLOSE.name(), e -> {
-            stage.close();
-        });
+        eventPublisher.subscribe(WindowEvent.CLOSE.name(),
+                e -> stage.close()
+        );
 
         eventPublisher.publish(ModeViewEvent.SHOW.name());
     }
@@ -99,7 +91,11 @@ public class MainFX extends Application {
         stage.getIcons().add(image(ICON));
     }
 
-    private void moveToCenter(Stage stage) {
+    private void show(Stage stage, Scene scene) {
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
         stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
