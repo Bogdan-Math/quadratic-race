@@ -23,17 +23,17 @@ public class ModeModel {
 
     public void setEasyMode() {
         this.millisecondsInterval = EASY_MODE;
-        eventPublisher.publish(ModeModelEvent.MODE_INITIALIZED.name());
+        eventPublisher.publish(ModeModelEvent.MODE_INITIALIZED);
     }
 
     public void setNormalMode() {
         this.millisecondsInterval = NORMAL_MODE;
-        eventPublisher.publish(ModeModelEvent.MODE_INITIALIZED.name());
+        eventPublisher.publish(ModeModelEvent.MODE_INITIALIZED);
     }
 
     public void setHardMode() {
         this.millisecondsInterval = HARD_MODE;
-        eventPublisher.publish(ModeModelEvent.MODE_INITIALIZED.name());
+        eventPublisher.publish(ModeModelEvent.MODE_INITIALIZED);
     }
 
     public int getMillisecondsInterval() {

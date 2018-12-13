@@ -51,7 +51,7 @@ public class RaceController {
 
                 if (roadModel.isFinished()) {
                     this.stop();
-                    eventPublisher.publish(RoadModelEvent.ROAD_FINISHED.name());
+                    eventPublisher.publish(RoadModelEvent.ROAD_FINISHED);
                 }
 
                 if (moveForward) {

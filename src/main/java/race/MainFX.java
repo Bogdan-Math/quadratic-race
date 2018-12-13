@@ -35,30 +35,30 @@ public class MainFX extends Application {
     public void start(Stage stage) {
         fillHeaderFor(stage);
 
-        List<String> events = asList(
+        List<Enum> events = asList(
 
-                ModeViewEvent.SHOW.name(),
-                ModeViewEvent.CLICK_EASY_MODE_BUTTON.name(),
-                ModeViewEvent.CLICK_NORMAL_MODE_BUTTON.name(),
-                ModeViewEvent.CLICK_HARD_MODE_BUTTON.name(),
+                ModeViewEvent.SHOW,
+                ModeViewEvent.CLICK_EASY_MODE_BUTTON,
+                ModeViewEvent.CLICK_NORMAL_MODE_BUTTON,
+                ModeViewEvent.CLICK_HARD_MODE_BUTTON,
 
-                ModeModelEvent.MODE_INITIALIZED.name(),
+                ModeModelEvent.MODE_INITIALIZED,
 
-                RoadViewEvent.MOVE_UP_PRESSED.name(),
-                RoadViewEvent.MOVE_UP_RELEASED.name(),
-                RoadViewEvent.MOVE_DOWN_PRESSED.name(),
-                RoadViewEvent.MOVE_DOWN_RELEASED.name(),
+                RoadViewEvent.MOVE_UP_PRESSED,
+                RoadViewEvent.MOVE_UP_RELEASED,
+                RoadViewEvent.MOVE_DOWN_PRESSED,
+                RoadViewEvent.MOVE_DOWN_RELEASED,
 
-                RoadModelEvent.V_CHANGED.name(),
+                RoadModelEvent.V_CHANGED,
 
-                PlayerViewEvent.MOVE_LEFT_PRESSED.name(),
-                PlayerViewEvent.MOVE_LEFT_RELEASED.name(),
-                PlayerViewEvent.MOVE_RIGHT_PRESSED.name(),
-                PlayerViewEvent.MOVE_RIGHT_RELEASED.name(),
+                PlayerViewEvent.MOVE_LEFT_PRESSED,
+                PlayerViewEvent.MOVE_LEFT_RELEASED,
+                PlayerViewEvent.MOVE_RIGHT_PRESSED,
+                PlayerViewEvent.MOVE_RIGHT_RELEASED,
 
-                RoadModelEvent.ROAD_FINISHED.name(),
+                RoadModelEvent.ROAD_FINISHED,
 
-                WindowEvent.CLOSE.name()
+                WindowEvent.CLOSE
         );
 
         EventPublisher eventPublisher = new EventBus(events);
@@ -67,23 +67,23 @@ public class MainFX extends Application {
         RaceController raceController = new RaceController(eventPublisher);
         RestartController restartController = new RestartController(eventPublisher);
 
-        eventPublisher.subscribe(ModeViewEvent.SHOW.name(),
+        eventPublisher.subscribe(ModeViewEvent.SHOW,
                 e -> show(stage, modeController.initializeScene())
         );
 
-        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED.name(),
+        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED,
                 e -> show(stage, raceController.initializeScene())
         );
 
-        eventPublisher.subscribe(RoadModelEvent.ROAD_FINISHED.name(),
+        eventPublisher.subscribe(RoadModelEvent.ROAD_FINISHED,
                 e -> show(stage, restartController.initializeScene())
         );
 
-        eventPublisher.subscribe(WindowEvent.CLOSE.name(),
+        eventPublisher.subscribe(WindowEvent.CLOSE,
                 e -> stage.close()
         );
 
-        eventPublisher.publish(ModeViewEvent.SHOW.name());
+        eventPublisher.publish(ModeViewEvent.SHOW);
     }
 
     private void fillHeaderFor(Stage stage) {

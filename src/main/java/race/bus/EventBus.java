@@ -9,18 +9,18 @@ public class EventBus implements EventPublisher {
 
     private Map<String, List<EventHandler>> eventMap;
 
-    public EventBus(List<String> events) {
+    public EventBus(List<Enum> events) {
         eventMap = new HashMap<>();
-        events.forEach(event -> eventMap.put(event, new ArrayList<>()));
+        events.forEach(event -> eventMap.put(event.name(), new ArrayList<>()));
     }
 
     @Override
-    public void subscribe(String event, EventHandler eventHandler) {
-        eventMap.get(event).add(eventHandler);
+    public void subscribe(Enum event, EventHandler eventHandler) {
+        eventMap.get(event.name()).add(eventHandler);
     }
 
     @Override
-    public void publish(String event) {
-        eventMap.get(event).forEach(eventHandler -> eventHandler.handle(event));
+    public void publish(Enum event) {
+        eventMap.get(event.name()).forEach(eventHandler -> eventHandler.handle(event));
     }
 }

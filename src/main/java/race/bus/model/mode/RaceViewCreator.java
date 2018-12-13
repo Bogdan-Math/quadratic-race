@@ -12,7 +12,7 @@ public class RaceViewCreator implements EventHandler {
     }
 
     @Override
-    public void handle(String event) {
+    public void handle(Enum event) {
         System.out.println("done: " + event + " " + modeModel.getMillisecondsInterval());
     }
 }

@@ -21,21 +21,21 @@ public class ModeController {
         ModeModel modeModel = new ModeModel(eventPublisher);
 
         //subscribe on mode view events
-        eventPublisher.subscribe(ModeViewEvent.CLICK_EASY_MODE_BUTTON.name(), new EasyModeModelSetter(modeModel));
-        eventPublisher.subscribe(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON.name(), new NormalModeModelSetter(modeModel));
-        eventPublisher.subscribe(ModeViewEvent.CLICK_HARD_MODE_BUTTON.name(), new HardModeModelSetter(modeModel));
+        eventPublisher.subscribe(ModeViewEvent.CLICK_EASY_MODE_BUTTON, new EasyModeModelSetter(modeModel));
+        eventPublisher.subscribe(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON, new NormalModeModelSetter(modeModel));
+        eventPublisher.subscribe(ModeViewEvent.CLICK_HARD_MODE_BUTTON, new HardModeModelSetter(modeModel));
 
         //subscribe on mode model events
-        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED.name(), new RaceViewCreator(modeModel));
+        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED, new RaceViewCreator(modeModel));
     }
 
     public Scene initializeScene() {
         ModeView modeView = new ModeView();
         Scene scene = new Scene(modeView);
 
-        modeView.getEasyModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_EASY_MODE_BUTTON.name()));
-        modeView.getNormalModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON.name()));
-        modeView.getHardModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_HARD_MODE_BUTTON.name()));
+        modeView.getEasyModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_EASY_MODE_BUTTON));
+        modeView.getNormalModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON));
+        modeView.getHardModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_HARD_MODE_BUTTON));
 
         return scene;
     }

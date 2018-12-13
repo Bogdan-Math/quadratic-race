@@ -9,7 +9,7 @@ public class EasyModeModelSetter extends AbstractModeModelSetter {
     }
 
     @Override
-    public void handle(String event) {
+    public void handle(Enum event) {
         System.out.println(event);
         this.modeModel.setEasyMode();
     }

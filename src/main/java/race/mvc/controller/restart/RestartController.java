@@ -19,8 +19,8 @@ public class RestartController {
         RestartView restartView = new RestartView();
         Scene scene = new Scene(restartView);
 
-        restartView.getRestartButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.SHOW.name()));
-        restartView.getCloseButton().setOnAction(e -> eventPublisher.publish(WindowEvent.CLOSE.name()));
+        restartView.getRestartButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.SHOW));
+        restartView.getCloseButton().setOnAction(e -> eventPublisher.publish(WindowEvent.CLOSE));
 
         return scene;
     }
