@@ -2,10 +2,6 @@ package race.mvc.controller.mode;
 
 import javafx.scene.Scene;
 import race.bus.EventPublisher;
-import race.bus.model.mode.RaceViewCreator;
-import race.bus.view.mode.EasyModeModelSetter;
-import race.bus.view.mode.HardModeModelSetter;
-import race.bus.view.mode.NormalModeModelSetter;
 import race.mvc.model.mode.ModeModel;
 import race.mvc.model.mode.ModeModelEvent;
 import race.mvc.view.mode.ModeView;
@@ -21,12 +17,22 @@ public class ModeController {
         ModeModel modeModel = new ModeModel(eventPublisher);
 
         //subscribe on mode view events
-        eventPublisher.subscribe(ModeViewEvent.CLICK_EASY_MODE_BUTTON, new EasyModeModelSetter(modeModel));
-        eventPublisher.subscribe(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON, new NormalModeModelSetter(modeModel));
-        eventPublisher.subscribe(ModeViewEvent.CLICK_HARD_MODE_BUTTON, new HardModeModelSetter(modeModel));
+        eventPublisher.subscribe(ModeViewEvent.CLICK_EASY_MODE_BUTTON,
+                e -> modeModel.setEasyMode())
+        ;
+
+        eventPublisher.subscribe(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON,
+                e -> modeModel.setNormalMode()
+        );
+
+        eventPublisher.subscribe(ModeViewEvent.CLICK_HARD_MODE_BUTTON,
+                e -> modeModel.setHardMode()
+        );
 
         //subscribe on mode model events
-        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED, new RaceViewCreator(modeModel));
+        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED,
+                e -> System.out.println("done: " + e.name() + " " + modeModel.getMillisecondsInterval())
+        );
     }
 
     public Scene initializeScene() {

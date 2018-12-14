@@ -12,7 +12,6 @@ public class RestartController {
 
     public RestartController(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
-
     }
 
     public Scene initializeScene() {
