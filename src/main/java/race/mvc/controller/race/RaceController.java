@@ -6,12 +6,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import race.bus.EventPublisher;
 import race.mvc.model.race.RaceModel;
-import race.mvc.model.race.player.PlayerModel;
-import race.mvc.model.race.road.RoadModel;
 import race.mvc.model.race.road.RoadModelEvent;
 import race.mvc.view.race.RaceView;
-import race.mvc.view.race.player.PlayerView;
-import race.mvc.view.race.road.RoadView;
 
 public class RaceController {
 
@@ -27,24 +23,22 @@ public class RaceController {
     }
 
     public Scene initializeScene() {
-        RaceModel raceModel = new RaceModel();
-        RaceView raceView = new RaceView();
+        var raceModel   = new RaceModel();
+        var raceView    = new RaceView();
+        var scene       = new Scene(raceView);
 
-        Scene scene = new Scene(raceView);
+        var roadModel   = raceModel.getRoadModel();
+        var roadView    = raceView.getRoadView();
 
-        RoadModel roadModel = raceModel.getRoadModel();
-        RoadView roadView = raceView.getRoadView();
-
-        PlayerModel playerModel = raceModel.getPlayerModel();
-        PlayerView playerView = raceView.getPlayerView();
-
+        var playerModel = raceModel.getPlayerModel();
+        var playerView  = raceView.getPlayerView();
 
         moveForward = false;
-        moveBack = false;
-        moveLeft = false;
-        moveRight = false;
+        moveBack    = false;
+        moveLeft    = false;
+        moveRight   = false;
 
-        AnimationTimer animationTimer = new AnimationTimer() {
+        new AnimationTimer() {
 
             @Override
             public void handle(long now) {
@@ -78,42 +72,42 @@ public class RaceController {
                 }
                 playerView.move(playerModel.dx());
             }
-        };
-        animationTimer.start();
+        }.start();
 
 
         scene.addEventHandler(KeyEvent.KEY_PRESSED, keyEvent -> {
-            KeyCode keyCode = keyEvent.getCode();
+            var keyCode = keyEvent.getCode();
 
             if (keyCode.equals(KeyCode.W)) {
                 moveForward = true;
             }
             if (keyCode.equals(KeyCode.S)) {
-                moveBack = true;
+                moveBack 	= true;
             }
             if (keyCode.equals(KeyCode.A)) {
-                moveLeft = true;
-                moveRight = false;
+                moveLeft 	= true;
+                moveRight 	= false;
             }
             if (keyCode.equals(KeyCode.D)) {
-                moveRight = true;
-                moveLeft = false;
+                moveRight 	= true;
+                moveLeft 	= false;
             }
         });
 
         scene.addEventHandler(KeyEvent.KEY_RELEASED, keyEvent -> {
-            KeyCode keyCode = keyEvent.getCode();
+            var keyCode = keyEvent.getCode();
+            
             if (keyCode.equals(KeyCode.W)) {
                 moveForward = false;
             }
             if (keyCode.equals(KeyCode.S)) {
-                moveBack = false;
+                moveBack 	= false;
             }
             if (keyCode.equals(KeyCode.A)) {
-                moveLeft = false;
+                moveLeft 	= false;
             }
             if (keyCode.equals(KeyCode.D)) {
-                moveRight = false;
+                moveRight 	= false;
             }
         });
 

@@ -61,11 +61,11 @@ public class MainFX extends Application {
                 WindowEvent.CLOSE
         );
 
-        EventPublisher eventPublisher = new EventBus(events);
+        var eventPublisher = new EventBus(events);
 
-        ModeController modeController = new ModeController(eventPublisher);
-        RaceController raceController = new RaceController(eventPublisher);
-        RestartController restartController = new RestartController(eventPublisher);
+        var modeController      = new ModeController(eventPublisher);
+        var raceController      = new RaceController(eventPublisher);
+        var restartController   = new RestartController(eventPublisher);
 
         eventPublisher.subscribe(ModeViewEvent.SHOW,
                 e -> show(stage, modeController.initializeScene())
@@ -96,7 +96,7 @@ public class MainFX extends Application {
         stage.setResizable(false);
         stage.show();
 
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        var primScreenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
         stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
     }

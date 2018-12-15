@@ -14,12 +14,11 @@ public class ModeController {
     public ModeController(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
 
-        ModeModel modeModel = new ModeModel(eventPublisher);
+        var modeModel = new ModeModel(eventPublisher);
 
-        //subscribe on mode view events
         eventPublisher.subscribe(ModeViewEvent.CLICK_EASY_MODE_BUTTON,
-                e -> modeModel.setEasyMode())
-        ;
+                e -> modeModel.setEasyMode()
+		);
 
         eventPublisher.subscribe(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON,
                 e -> modeModel.setNormalMode()
@@ -29,15 +28,14 @@ public class ModeController {
                 e -> modeModel.setHardMode()
         );
 
-        //subscribe on mode model events
         eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED,
                 e -> System.out.println("done: " + e.name() + " " + modeModel.getMillisecondsInterval())
         );
     }
 
     public Scene initializeScene() {
-        ModeView modeView = new ModeView();
-        Scene scene = new Scene(modeView);
+        var modeView 	= new ModeView();
+        var scene 		= new Scene(modeView);
 
         modeView.getEasyModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_EASY_MODE_BUTTON));
         modeView.getNormalModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON));
