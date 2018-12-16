@@ -1,12 +1,10 @@
 package race;
 
 import javafx.application.Application;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import race.bus.EventBus;
-import race.bus.EventPublisher;
 import race.mvc.controller.mode.ModeController;
 import race.mvc.controller.race.RaceController;
 import race.mvc.controller.restart.RestartController;
@@ -14,8 +12,6 @@ import race.mvc.model.mode.ModeModelEvent;
 import race.mvc.model.race.road.RoadModelEvent;
 import race.mvc.view.WindowEvent;
 import race.mvc.view.mode.ModeViewEvent;
-import race.mvc.view.race.player.PlayerViewEvent;
-import race.mvc.view.race.road.RoadViewEvent;
 
 import java.util.List;
 
@@ -43,19 +39,7 @@ public class MainFX extends Application {
                 ModeViewEvent.CLICK_HARD_MODE_BUTTON,
 
                 ModeModelEvent.MODE_INITIALIZED,
-
-                RoadViewEvent.MOVE_UP_PRESSED,
-                RoadViewEvent.MOVE_UP_RELEASED,
-                RoadViewEvent.MOVE_DOWN_PRESSED,
-                RoadViewEvent.MOVE_DOWN_RELEASED,
-
-                RoadModelEvent.V_CHANGED,
-
-                PlayerViewEvent.MOVE_LEFT_PRESSED,
-                PlayerViewEvent.MOVE_LEFT_RELEASED,
-                PlayerViewEvent.MOVE_RIGHT_PRESSED,
-                PlayerViewEvent.MOVE_RIGHT_RELEASED,
-
+                
                 RoadModelEvent.ROAD_FINISHED,
 
                 WindowEvent.CLOSE
