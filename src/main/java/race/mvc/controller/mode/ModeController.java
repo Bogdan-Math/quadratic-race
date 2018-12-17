@@ -2,10 +2,10 @@ package race.mvc.controller.mode;
 
 import javafx.scene.Scene;
 import race.bus.EventPublisher;
+import race.bus.UIEvent;
 import race.mvc.model.mode.ModeModel;
 import race.mvc.model.mode.ModeModelEvent;
 import race.mvc.view.mode.ModeView;
-import race.mvc.view.mode.ModeViewEvent;
 
 public class ModeController {
 
@@ -16,15 +16,15 @@ public class ModeController {
 
         var modeModel = new ModeModel(eventPublisher);
 
-        eventPublisher.subscribe(ModeViewEvent.CLICK_EASY_MODE_BUTTON,
+        eventPublisher.subscribe(UIEvent.EASY_MODE_BUTTON_CLICKED,
                 e -> modeModel.setEasyMode()
 		);
 
-        eventPublisher.subscribe(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON,
+        eventPublisher.subscribe(UIEvent.NORMAL_MODE_BUTTON_CLICKED,
                 e -> modeModel.setNormalMode()
         );
 
-        eventPublisher.subscribe(ModeViewEvent.CLICK_HARD_MODE_BUTTON,
+        eventPublisher.subscribe(UIEvent.HARD_MODE_BUTTON_CLICKED,
                 e -> modeModel.setHardMode()
         );
 
@@ -37,9 +37,9 @@ public class ModeController {
         var modeView 	= new ModeView();
         var scene 		= new Scene(modeView);
 
-        modeView.getEasyModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_EASY_MODE_BUTTON));
-        modeView.getNormalModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_NORMAL_MODE_BUTTON));
-        modeView.getHardModeButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.CLICK_HARD_MODE_BUTTON));
+        modeView.getEasyModeButton().setOnAction(e -> eventPublisher.publish(UIEvent.EASY_MODE_BUTTON_CLICKED));
+        modeView.getNormalModeButton().setOnAction(e -> eventPublisher.publish(UIEvent.NORMAL_MODE_BUTTON_CLICKED));
+        modeView.getHardModeButton().setOnAction(e -> eventPublisher.publish(UIEvent.HARD_MODE_BUTTON_CLICKED));
 
         return scene;
     }

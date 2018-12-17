@@ -2,8 +2,8 @@ package race.mvc.controller.restart;
 
 import javafx.scene.Scene;
 import race.bus.EventPublisher;
+import race.bus.UIEvent;
 import race.mvc.view.WindowEvent;
-import race.mvc.view.mode.ModeViewEvent;
 import race.mvc.view.restart.RestartView;
 
 public class RestartController {
@@ -18,7 +18,7 @@ public class RestartController {
         var restartView = new RestartView();
         var scene 		= new Scene(restartView);
 
-        restartView.getRestartButton().setOnAction(e -> eventPublisher.publish(ModeViewEvent.SHOW));
+        restartView.getRestartButton().setOnAction(e -> eventPublisher.publish(UIEvent.APP_STARTED));
         restartView.getCloseButton().setOnAction(e -> eventPublisher.publish(WindowEvent.CLOSE));
 
         return scene;

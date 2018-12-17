@@ -5,13 +5,13 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import race.bus.EventBus;
+import race.bus.UIEvent;
 import race.mvc.controller.mode.ModeController;
 import race.mvc.controller.race.RaceController;
 import race.mvc.controller.restart.RestartController;
 import race.mvc.model.mode.ModeModelEvent;
 import race.mvc.model.race.road.RoadModelEvent;
 import race.mvc.view.WindowEvent;
-import race.mvc.view.mode.ModeViewEvent;
 
 import java.util.List;
 
@@ -32,11 +32,11 @@ public class MainFX extends Application {
         fillHeaderFor(stage);
 
         List<Enum> events = asList(
-
-                ModeViewEvent.SHOW,
-                ModeViewEvent.CLICK_EASY_MODE_BUTTON,
-                ModeViewEvent.CLICK_NORMAL_MODE_BUTTON,
-                ModeViewEvent.CLICK_HARD_MODE_BUTTON,
+        
+                UIEvent.APP_STARTED,
+                UIEvent.EASY_MODE_BUTTON_CLICKED,
+                UIEvent.NORMAL_MODE_BUTTON_CLICKED,
+                UIEvent.HARD_MODE_BUTTON_CLICKED,
 
                 ModeModelEvent.MODE_INITIALIZED,
                 
@@ -51,7 +51,7 @@ public class MainFX extends Application {
         var raceController      = new RaceController(eventPublisher);
         var restartController   = new RestartController(eventPublisher);
 
-        eventPublisher.subscribe(ModeViewEvent.SHOW,
+        eventPublisher.subscribe(UIEvent.APP_STARTED,
                 e -> show(stage, modeController.initializeScene())
         );
 
@@ -67,7 +67,7 @@ public class MainFX extends Application {
                 e -> stage.close()
         );
 
-        eventPublisher.publish(ModeViewEvent.SHOW);
+        eventPublisher.publish(UIEvent.APP_STARTED);
     }
 
     private void fillHeaderFor(Stage stage) {
