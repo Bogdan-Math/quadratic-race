@@ -9,7 +9,11 @@ import race.mvc.model.race.RaceModel;
 import race.mvc.model.race.road.RoadModelEvent;
 import race.mvc.view.race.RaceView;
 
+import static race.multimedia.sound.SoundResource.sound;
+
 public class RaceController {
+    
+    private static final String MAIN_SOUND = "race/multimedia/sound/main.mp3";
 
     private boolean moveForward;
     private boolean moveBack;
@@ -23,7 +27,9 @@ public class RaceController {
     }
 
     public Scene initializeScene() {
-        var raceModel   = new RaceModel();
+		new Thread(() -> sound(MAIN_SOUND).play()).start();
+	
+		var raceModel   = new RaceModel();
         var raceView    = new RaceView();
         var scene       = new Scene(raceView);
 
@@ -37,8 +43,8 @@ public class RaceController {
         moveBack    = false;
         moveLeft    = false;
         moveRight   = false;
-
-        new AnimationTimer() {
+        
+		new AnimationTimer() {
 
             @Override
             public void handle(long now) {

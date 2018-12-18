@@ -17,6 +17,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static race.multimedia.image.ImageResource.image;
+import static race.multimedia.sound.SoundResource.sound;
 
 public class MainFX extends Application {
 
@@ -55,11 +56,20 @@ public class MainFX extends Application {
                 e -> show(stage, modeController.initializeScene())
         );
 
-        eventPublisher.subscribe(ModeModelEvent.MODE_INITIALIZED,
+        //TODO: remove mode buttons events
+        eventPublisher.subscribe(UIEvent.EASY_MODE_BUTTON_CLICKED,
                 e -> show(stage, raceController.initializeScene())
         );
-
-        eventPublisher.subscribe(RoadModelEvent.ROAD_FINISHED,
+	
+		eventPublisher.subscribe(UIEvent.NORMAL_MODE_BUTTON_CLICKED,
+				e -> show(stage, raceController.initializeScene())
+		);
+	
+		eventPublisher.subscribe(UIEvent.HARD_MODE_BUTTON_CLICKED,
+				e -> show(stage, raceController.initializeScene())
+		);
+	
+		eventPublisher.subscribe(RoadModelEvent.ROAD_FINISHED,
                 e -> show(stage, restartController.initializeScene())
         );
 

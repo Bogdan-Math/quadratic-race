@@ -1,7 +1,5 @@
 package race.mvc.model.mode;
 
-import race.bus.EventPublisher;
-
 public class ModeModel {
 
     private static final int EASY_MODE = 1000;
@@ -10,10 +8,7 @@ public class ModeModel {
 
     private int millisecondsInterval;
 
-    private EventPublisher eventPublisher;
-
-    public ModeModel(EventPublisher eventPublisher) {
-        this.eventPublisher = eventPublisher;
+    public ModeModel() {
     }
 
     //TODO: remove it after global refactor
@@ -23,17 +18,14 @@ public class ModeModel {
 
     public void setEasyMode() {
         this.millisecondsInterval = EASY_MODE;
-        eventPublisher.publish(ModeModelEvent.MODE_INITIALIZED);
     }
 
     public void setNormalMode() {
         this.millisecondsInterval = NORMAL_MODE;
-        eventPublisher.publish(ModeModelEvent.MODE_INITIALIZED);
     }
 
     public void setHardMode() {
         this.millisecondsInterval = HARD_MODE;
-        eventPublisher.publish(ModeModelEvent.MODE_INITIALIZED);
     }
 
     public int getMillisecondsInterval() {

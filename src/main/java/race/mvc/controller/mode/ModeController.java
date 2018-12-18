@@ -14,7 +14,7 @@ public class ModeController {
     public ModeController(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
 
-        var modeModel = new ModeModel(eventPublisher);
+        var modeModel = new ModeModel();
 
         eventPublisher.subscribe(UIEvent.EASY_MODE_BUTTON_CLICKED,
                 e -> modeModel.setEasyMode()
