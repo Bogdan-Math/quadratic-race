@@ -60,11 +60,13 @@ public class MainFX extends Application {
         eventPublisher.subscribe(UIEvent.EASY_MODE_BUTTON_CLICKED,
                 e -> show(stage, raceController.initializeScene())
         );
-	
+    
+        //TODO: remove mode buttons events
 		eventPublisher.subscribe(UIEvent.NORMAL_MODE_BUTTON_CLICKED,
 				e -> show(stage, raceController.initializeScene())
 		);
-	
+    
+        //TODO: remove mode buttons events
 		eventPublisher.subscribe(UIEvent.HARD_MODE_BUTTON_CLICKED,
 				e -> show(stage, raceController.initializeScene())
 		);
