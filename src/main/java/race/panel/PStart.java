@@ -1,7 +1,7 @@
 package race.panel;
 
 import race.event.StartButtonsAdapter;
-import race.mvc.model.mode.ModeModel;
+import race.object.mode.ModeModel;
 
 import java.awt.*;
 

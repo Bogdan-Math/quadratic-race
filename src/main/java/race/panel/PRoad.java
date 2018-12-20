@@ -6,7 +6,7 @@ import race.frame.Road;
 import race.logic.Collision;
 import race.logic.Result;
 import race.logic.Win;
-import race.mvc.model.mode.ModeModel;
+import race.object.mode.ModeModel;
 import race.object.Enemy;
 import race.object.Player;
 

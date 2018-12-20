@@ -1,4 +1,4 @@
-package race.mvc.model.mode;
+package race.object.mode;
 
 public class ModeModel {
 

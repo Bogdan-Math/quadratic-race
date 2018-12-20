@@ -5,8 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import race.bus.EventPublisher;
+import race.bus.UIEvent;
 import race.mvc.model.race.RaceModel;
-import race.mvc.model.race.road.RoadModelEvent;
 import race.mvc.view.race.RaceView;
 
 import static race.multimedia.sound.SoundResource.sound;
@@ -51,7 +51,7 @@ public class RaceController {
 
                 if (roadModel.isFinished()) {
                     this.stop();
-                    eventPublisher.publish(RoadModelEvent.ROAD_FINISHED);
+                    eventPublisher.publish(UIEvent.ROAD_FINISHED);
                 }
 
                 if (moveForward) {

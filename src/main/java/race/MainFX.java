@@ -9,15 +9,11 @@ import race.bus.UIEvent;
 import race.mvc.controller.mode.ModeController;
 import race.mvc.controller.race.RaceController;
 import race.mvc.controller.restart.RestartController;
-import race.mvc.model.mode.ModeModelEvent;
-import race.mvc.model.race.road.RoadModelEvent;
-import race.mvc.view.WindowEvent;
 
 import java.util.List;
 
 import static java.util.Arrays.asList;
 import static race.multimedia.image.ImageResource.image;
-import static race.multimedia.sound.SoundResource.sound;
 
 public class MainFX extends Application {
 
@@ -34,16 +30,16 @@ public class MainFX extends Application {
 
         List<Enum> events = asList(
         
-                UIEvent.APP_STARTED,
+                UIEvent.OPEN_APP,
+                
                 UIEvent.EASY_MODE_BUTTON_CLICKED,
                 UIEvent.NORMAL_MODE_BUTTON_CLICKED,
                 UIEvent.HARD_MODE_BUTTON_CLICKED,
+        
+                UIEvent.ROAD_FINISHED,
+        
+                UIEvent.CLOSE_APP
 
-                ModeModelEvent.MODE_INITIALIZED,
-                
-                RoadModelEvent.ROAD_FINISHED,
-
-                WindowEvent.CLOSE
         );
 
         var eventPublisher = new EventBus(events);
@@ -52,34 +48,34 @@ public class MainFX extends Application {
         var raceController      = new RaceController(eventPublisher);
         var restartController   = new RestartController(eventPublisher);
 
-        eventPublisher.subscribe(UIEvent.APP_STARTED,
+        eventPublisher.subscribe(UIEvent.OPEN_APP,
                 e -> show(stage, modeController.initializeScene())
         );
 
-        //TODO: remove mode buttons events
+        //TODO: change mode buttons events
         eventPublisher.subscribe(UIEvent.EASY_MODE_BUTTON_CLICKED,
                 e -> show(stage, raceController.initializeScene())
         );
     
-        //TODO: remove mode buttons events
+        //TODO: change mode buttons events
 		eventPublisher.subscribe(UIEvent.NORMAL_MODE_BUTTON_CLICKED,
 				e -> show(stage, raceController.initializeScene())
 		);
     
-        //TODO: remove mode buttons events
+        //TODO: change mode buttons events
 		eventPublisher.subscribe(UIEvent.HARD_MODE_BUTTON_CLICKED,
 				e -> show(stage, raceController.initializeScene())
 		);
 	
-		eventPublisher.subscribe(RoadModelEvent.ROAD_FINISHED,
+		eventPublisher.subscribe(UIEvent.ROAD_FINISHED,
                 e -> show(stage, restartController.initializeScene())
         );
 
-        eventPublisher.subscribe(WindowEvent.CLOSE,
+        eventPublisher.subscribe(UIEvent.CLOSE_APP,
                 e -> stage.close()
         );
 
-        eventPublisher.publish(UIEvent.APP_STARTED);
+        eventPublisher.publish(UIEvent.OPEN_APP);
     }
 
     private void fillHeaderFor(Stage stage) {
