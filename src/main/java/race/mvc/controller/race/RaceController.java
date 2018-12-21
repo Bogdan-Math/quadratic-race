@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.AudioClip;
 import race.bus.EventPublisher;
 import race.bus.UIEvent;
 import race.mvc.model.race.RaceModel;
@@ -13,7 +14,7 @@ import static race.multimedia.sound.SoundResource.sound;
 
 public class RaceController {
     
-    private static final String MAIN_SOUND = "race/multimedia/sound/main.mp3";
+    private static final AudioClip MAIN_SOUND = sound("race/multimedia/sound/main.mp3");
 
     private boolean moveForward;
     private boolean moveBack;
@@ -27,7 +28,8 @@ public class RaceController {
     }
 
     public Scene initializeScene() {
-		new Thread(() -> sound(MAIN_SOUND).play()).start();
+        
+        MAIN_SOUND.play();
 	
 		var raceModel   = new RaceModel();
         var raceView    = new RaceView();
