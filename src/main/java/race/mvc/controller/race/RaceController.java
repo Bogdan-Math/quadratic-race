@@ -28,7 +28,8 @@ public class RaceController {
     }
 
     public Scene initializeScene() {
-        
+
+        MAIN_SOUND.stop();
         MAIN_SOUND.play();
 	
 		var raceModel   = new RaceModel();
