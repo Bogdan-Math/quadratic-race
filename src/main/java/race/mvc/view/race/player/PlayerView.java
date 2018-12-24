@@ -8,13 +8,13 @@ import static race.multimedia.image.ImageResource.image;
 
 public class PlayerView extends Pane {
 
-    private static final Image PLAYER_IMAGE = image("race/multimedia/image/player.png");
+    public static final Image IMAGE = image("race/multimedia/image/player.png");
     private final ImageView playerView;
 
     public PlayerView() {
-        setMaxWidth(PLAYER_IMAGE.getWidth());
-        setMaxHeight(PLAYER_IMAGE.getHeight());
-        playerView = new ImageView(PLAYER_IMAGE);
+        setMaxWidth(IMAGE.getWidth());
+        setMaxHeight(IMAGE.getHeight());
+        playerView = new ImageView(IMAGE);
         getChildren().add(playerView);
     }
 

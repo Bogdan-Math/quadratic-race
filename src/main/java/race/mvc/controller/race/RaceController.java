@@ -66,7 +66,8 @@ public class RaceController {
                 if (moveBack) {
                     roadModel.d2S(-0.5);
                 }
-                roadView.move(roadModel.dS());
+                
+//                roadView.move(roadModel.dS());
 
 
                 if (moveLeft || moveRight) {
@@ -79,7 +80,9 @@ public class RaceController {
                 } else {
                     playerModel.dx(0);
                 }
-                playerView.move(playerModel.dx());
+                
+                raceView.move(roadModel.dS(), playerModel.dx());
+//                playerView.move(playerModel.dx());
             }
         }.start();
 

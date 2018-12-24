@@ -13,12 +13,12 @@ public class RaceView extends Pane {
         roadView = new RoadView();
         playerView = new PlayerView();
 
-        initializePlayerViewPosition();
+        initializePlayerViewStartPosition();
 
         getChildren().addAll(roadView, playerView);
     }
 
-    private void initializePlayerViewPosition() {
+    private void initializePlayerViewStartPosition() {
         playerView.setTranslateX(roadView.getMaxWidth() / 2 - playerView.getMaxWidth() / 2);
         playerView.setTranslateY(roadView.getMaxHeight()  *  3 / 4);
     }
@@ -30,4 +30,26 @@ public class RaceView extends Pane {
     public PlayerView getPlayerView() {
         return playerView;
     }
+    
+    public void move(double rvMove, double pvMove) {
+    	checkPlayerViewBounds();
+    	roadView.move(rvMove);
+    	playerView.move(pvMove);
+	}
+    
+    private void checkPlayerViewBounds() {
+		double rvLeftBound 	= 0;
+		double rvRightBound = roadView.getWidth();
+
+		double pvLeftBound 	= playerView.getTranslateX();
+		double pvRightBound = pvLeftBound + playerView.getWidth();
+		
+		if (pvLeftBound <= rvLeftBound) {
+			playerView.setTranslateX(rvLeftBound);
+		}
+	
+		if (pvRightBound >= rvRightBound) {
+			playerView.setTranslateX(rvRightBound - playerView.getWidth());
+		}
+	}
 }
