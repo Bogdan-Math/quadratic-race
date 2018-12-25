@@ -21,9 +21,6 @@ public class EventBus implements EventPublisher {
 
     @Override
     public void publish(Enum event) {
-        List<EventHandler> eventHandlers = eventMap.get(event.name());
-        for (EventHandler eventHandler : eventHandlers) {
-            eventHandler.handle(event);
-        }
+        eventMap.get(event.name()).forEach(eventHandler -> eventHandler.handle(event));
     }
 }
